@@ -34,6 +34,8 @@ Attributes
 * `node["transmission"]["speed_limit_down_enabled"]` - Whether the download limit is used, default `false`.
 * `node["transmission"]["speed_limit_up"]` - The KB/s limit for uploading files, default `100`.
 * `node["transmission"]["speed_limit_up_enabled"]` - Whether the upload limit is used, default `false`.
+* `node["transmission"]["watch_dir"]` - Directory to watch for new torrent files, default `/var/lib/transmission-daemon/watch`.
+* `node["transmission"]["watch_dir_enabled"]` - Whether the watch file directory is used, default `false`.
 
 The file also contains the following attribute types:
 
