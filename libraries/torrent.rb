@@ -37,19 +37,19 @@ module TransmissionSimple
     }
     
     def downloading?
-      self.status == STATUS_CODES.index('DOWNLOAD')
+      self.status == STATUS_CODES.key('DOWNLOAD')
     end
 
     def stopped?
-      self.status == STATUS_CODES.index('STOPPED')
+      self.status == STATUS_CODES.key('STOPPED')
     end
 
     def checking?
-      self.status == STATUS_CODES.index('CHECK') || self.status == STATUS_CODES.index('CHECK_WAIT')
+      self.status == STATUS_CODES.key('CHECK') || self.status == STATUS_CODES.key('CHECK_WAIT')
     end
 
     def seeding?
-      self.status == STATUS_CODES.index('SEED')
+      self.status == STATUS_CODES.key('SEED')
     end
     
     def status_message
