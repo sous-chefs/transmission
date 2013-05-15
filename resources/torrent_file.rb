@@ -20,6 +20,8 @@
 
 actions :create
 
+default_action :create
+
 attribute :path, :kind_of => String, :name_attribute => true
 attribute :torrent, :kind_of => String
 attribute :blocking, :default => true
