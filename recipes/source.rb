@@ -26,7 +26,7 @@ build_pkgs = value_for_platform(
   ["debian","ubuntu"] => {
     "default" => ["automake","libtool","pkg-config","libcurl4-openssl-dev","intltool","libxml2-dev","libgtk2.0-dev","libnotify-dev","libglib2.0-dev","libevent-dev"]
   },
-  ["centos","redhat","fedora"] => {
+  ["centos","redhat","fedora","scientific", "amazon"] => {
     "default" => ["curl", "curl-devel", "libevent", "libevent-devel", "intltool", "gettext"]
   },
   "default" => ["automake","libtool","pkg-config","libcurl4-openssl-dev","intltool","libxml2-dev","libgtk2.0-dev","libnotify-dev","libglib2.0-dev","libevent-dev"]
@@ -80,3 +80,4 @@ directory node['transmission']['config_dir'] do
 end
 
 include_recipe "transmission::default"
+
