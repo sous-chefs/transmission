@@ -80,4 +80,3 @@ directory node['transmission']['config_dir'] do
 end
 
 include_recipe "transmission::default"
-
