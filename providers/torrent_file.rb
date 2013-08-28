@@ -48,7 +48,7 @@ action :create do
           @torrent = @transmission.get_torrent(@torrent.hash_string)
           Chef::Log.debug("Downloading #{@new_resource}...#{@torrent.percent_done * 100}% complete")
           sleep 3
-        end while @torrent.downloading?
+        end while @torrent.downloading? || @torrent.checking?
         move_and_clean_up
         new_resource.updated_by_last_action(true)
       end
