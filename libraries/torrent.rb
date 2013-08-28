@@ -77,8 +77,7 @@ module Opscode
       end
 
       def remove_torrent(torrent_hash, delete_data=false)
-        #@transmission.send_request('torrent-remove', {'ids' => [torrent_hash], 'delete-local-data' => delete_data})
-        @transmission.send_request('torrent-remove', {'ids' => [torrent_hash]})
+        @transmission.send_request('torrent-remove', {'ids' => [torrent_hash], 'delete-local-data' => delete_data})
       end
     end
   end
