@@ -5,6 +5,9 @@ Installs the [Transmission BitTorrent Client](http://transmissionbt.org) and inc
 
 Requirements
 ------------
+### Ruby
+This cookbook requires Ruby 1.9 or higher
+
 ### Platforms
 Known to work on Debian, Ubuntu, Red Hat and CentOS
 
