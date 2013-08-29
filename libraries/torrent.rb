@@ -27,15 +27,15 @@ end
 # all your monkey patches are belong to us
 module TransmissionSimple
   class Torrent < OpenStruct
-    
+
     STATUS_CODES = {
-      1 => 'CHECK_WAIT', 
-      2 => 'CHECK', 
-      4 => 'DOWNLOAD', 
-      8 => 'SEED', 
+      1 => 'CHECK_WAIT',
+      2 => 'CHECK',
+      4 => 'DOWNLOAD',
+      8 => 'SEED',
       16 => 'STOPPED'
     }
-    
+
     def downloading?
       self.status == STATUS_CODES.key('DOWNLOAD')
     end
@@ -51,7 +51,7 @@ module TransmissionSimple
     def seeding?
       self.status == STATUS_CODES.key('SEED')
     end
-    
+
     def status_message
       STATUS_CODES[self.status]
     end

@@ -26,7 +26,7 @@ export PATH="${PATH:+$PATH:}/sbin:/usr/local/bin"
 start_daemon () {
     if [ $ENABLE_DAEMON != 1 ]; then
         log_progress_msg "(disabled, see /etc/default/${NAME})"
-    else    
+    else
         start-stop-daemon --start \
         --chuid $USER \
         --exec $DAEMON -- $OPTIONS

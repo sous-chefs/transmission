@@ -36,7 +36,7 @@ template "transmission-default" do
   case node['platform']
   when "centos", "redhat", "amazon", "scientific"
     path "/etc/sysconfig/transmission-daemon"
-  else 
+  else
     path "/etc/default/transmission-daemon"
   end
   source "transmission-daemon.default.erb"

@@ -35,7 +35,7 @@ DAEMON_LOGFILE=/var/log/$NAME.log
 
 start() {
     echo -n $"Starting ${NAME}: "
-    
+
     if [ -n "$TRANSMISSION_HOME" ]; then
         export TRANSMISSION_HOME
     fi
@@ -57,7 +57,7 @@ start() {
 
 stop() {
     echo -n $"Shutting down ${NAME}: "
-    
+
     killproc $NAME
     RETVAL=$?
 
@@ -68,7 +68,7 @@ stop() {
 
 reload() {
     echo -n $"Reloading ${NAME}: "
-    
+
     killproc $NAME -1
     RETVAL=$?
     echo

@@ -39,7 +39,7 @@ def load_current_resource
 end
 
 action :create do
-  unless exists?  
+  unless exists?
     unless @torrent
       @torrent = @transmission.add_torrent(cached_torrent)
       Chef::Log.info("Added #{@new_resource} to the swarm with a name of '#{@torrent.name}'")
@@ -87,7 +87,7 @@ def move_and_clean_up
       group new_resource.group
     end
     f.run_action(:create)
-    @transmission.remove_torrent(@torrent.hash_string, true) 
+    @transmission.remove_torrent(@torrent.hash_string, true)
   end
 end
 
