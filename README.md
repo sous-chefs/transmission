@@ -1,25 +1,20 @@
-Description
-===========
-
+transmission Cookbook
+=====================
 Installs the [Transmission BitTorrent Client](http://transmissionbt.org) and includes a `transmission_torrent_file` LWRP.
 
+
 Requirements
-============
-
-Platform
---------
-
+------------
+### Platforms
 Known to work on Debian, Ubuntu, Red Hat and CentOS
 
-Cookbooks
----------
+### Cookbooks
+- build-essential - for compiling the source.
+- openssl - for generating a secure password.
 
-* build-essential - for compiling the source.
-* openssl - for generating a secure password.
 
 Attributes
-==========
-
+----------
 * `node["transmission"]["peer_port"]` - The port Transmission listens on for peering, default `51413`.
 * `node["transmission"]["rpc_bind_address"]` - Where to listen for RPC connections, default `0.0.0.0`.
 * `node["transmission"]["rpc_port"]` - The port Transmission listens on for remote services, default `9091`.
@@ -39,23 +34,19 @@ Attributes
 
 The file also contains the following attribute types:
 
-* platform specific locations and settings.
-* source installation settings
+- platform specific locations and settings.
+- source installation settings
+
 
 Resource/Provider
-=================
-
-`transmission_torrent_file`
----------------------------
-
+-----------------
+### `transmission_torrent_file`
 Download a file via the [BitTorrent protocol](http://en.wikipedia.org/wiki/BitTorrent).  The usage semantics are like that of the existing [file](http://wiki.opscode.com/display/chef/Resources#Resources-File) and [remote_file](http://wiki.opscode.com/display/chef/Resources#Resources-RemoteFile) resources.  This allows very fast downloads for files that are part of large BitTorrent swarms.  The Ubuntu 10.04 LTS ISO (around 700MB) downloads in about 50 seconds.
 
-# Actions
-
+#### Actions
 - :create: Download a file via the BitTorrent protocol
 
-# Attribute Parameters
-
+#### Attribute Parameters
 - path: name attribute. the path to the file
 - torrent: torrent file of the swarm to join.  can either be a url or local file path
 - blocking: should the file be downloaded in a blocking way?  If `true` Chef will download the file in a single Chef run, if `false` Chef will check for a completed download during each Chef run until the download is complete. default is `true`.
@@ -67,52 +58,52 @@ Download a file via the [BitTorrent protocol](http://en.wikipedia.org/wiki/BitTo
 - rpc_username: the username of the Transmission RPC account. default is `transmission`.
 - rpc_password: the password of the Transmission RPC account . should probably be `node['transmission']['rpc_password']` which by default is a secure password generated for this node.
 
-# Example
+#### Examples
+Download the lucid ISO
 
-    # download the lucid iso
-    transmission_torrent_file "/home/ubuntu/ubuntu.iso"  do
-      torrent "http://releases.ubuntu.com/lucid/ubuntu-10.04.1-server-i386.iso.torrent"
-      owner 'ubuntu'
-      group 'ubuntu'
-      rpc_username node['transmission']['rpc_username']
-      rpc_password node['transmission']['rpc_password']
-      action :create
-    end
+```ruby
+transmission_torrent_file "/home/ubuntu/ubuntu.iso"  do
+  torrent "http://releases.ubuntu.com/lucid/ubuntu-10.04.1-server-i386.iso.torrent"
+  owner 'ubuntu'
+  group 'ubuntu'
+  rpc_username node['transmission']['rpc_username']
+  rpc_password node['transmission']['rpc_password']
+  action :create
+end
+```
 
-    # do the same thing but continue seeding after download
-    transmission_torrent_file "/home/ubuntu/ubuntu.iso"  do
-      torrent "http://releases.ubuntu.com/lucid/ubuntu-10.04.1-server-i386.iso.torrent"
-      owner 'ubuntu'
-      group 'ubuntu'
-      continue_seeding true
-      rpc_username node['transmission']['rpc_username']
-      rpc_password node['transmission']['rpc_password']
-      action :create
-    end
+Continue seeding after download
+
+```ruby
+transmission_torrent_file "/home/ubuntu/ubuntu.iso"  do
+  torrent "http://releases.ubuntu.com/lucid/ubuntu-10.04.1-server-i386.iso.torrent"
+  owner 'ubuntu'
+  group 'ubuntu'
+  continue_seeding true
+  rpc_username node['transmission']['rpc_username']
+  rpc_password node['transmission']['rpc_password']
+  action :create
+end
+```
+
 
 Usage
-=====
-
-default
--------
-
+-----
+### default
 Include default recipe in a run list, to get some Transmission installed. Installs Transmission by package or source depending on the platform.
 
-package
--------
-
+### package
 Installs Transmission from packages.  This should only be loaded by the default recipe.
 
-source
-------
-
+### source
 Installs Transmission from source.  This should only be loaded by the default recipe.
 
-License and Author
-==================
 
-Author: Seth Chisamore (<schisamo@opscode.com>)
+License & Authors
+-----------------
+- Author:: Seth Chisamore (<schisamo@opscode.com>)
 
+```text
 Copyright 2011, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -126,3 +117,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
