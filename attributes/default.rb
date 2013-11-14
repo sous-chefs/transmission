@@ -38,7 +38,8 @@ default['transmission']['peer_port']        = 51413
 
 default['transmission']['rpc_bind_address'] = '0.0.0.0'
 default['transmission']['rpc_username']     = 'transmission'
-set_unless['transmission']['rpc_password']  = secure_password
+default['transmission']['rpc_password']     = 'transmission'
+# set_unless['transmission']['rpc_password']  = secure_password
 default['transmission']['rpc_port']         = 9091
 
 default['transmission']['home']             = '/var/lib/transmission-daemon'
