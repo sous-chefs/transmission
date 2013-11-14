@@ -54,5 +54,5 @@ default['transmission']['speed_limit_down_enabled'] = 'false'
 default['transmission']['speed_limit_up']           = 100 #KB/s
 default['transmission']['speed_limit_up_enabled']   = 'false'
 
-default['transmission']['rpc-whitelist']          = '127.0.0.1'
-default['transmission']['rpc-whitelist-enabled']  = 'true'
+default['transmission']['rpc_whitelist']          = '127.0.0.1'
+default['transmission']['rpc_whitelist_enabled']  = 'true'
