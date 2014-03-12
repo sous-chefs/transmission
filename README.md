@@ -1,6 +1,6 @@
 transmission Cookbook
 =====================
-Installs the [Transmission BitTorrent Client](http://transmissionbt.org) and includes a `transmission_torrent_file` LWRP.
+Installs the [Transmission BitTorrent Client](http://www.transmissionbt.com) and includes a `transmission_torrent_file` LWRP.
 
 
 Requirements
