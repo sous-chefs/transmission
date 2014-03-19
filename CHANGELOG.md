@@ -3,6 +3,11 @@ transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
 
+v2.0.2 (2014-03-19)
+-------------------
+- [COOK-4424] Updates Transmission url in README'
+
+
 v2.0.0
 ------
 **Requires Ruby 1.9 or higher!**
