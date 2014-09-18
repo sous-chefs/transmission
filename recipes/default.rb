@@ -74,4 +74,5 @@ end
 
 link "/etc/transmission-daemon/settings.json" do
   to "#{node['transmission']['config_dir']}/settings.json"
+  not_if { File.symlink?("#{node['transmission']['config_dir']}/settings.json") }
 end
