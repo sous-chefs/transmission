@@ -40,6 +40,8 @@ default['transmission']['rpc_bind_address'] = '0.0.0.0'
 default['transmission']['rpc_username']     = 'transmission'
 set_unless['transmission']['rpc_password']  = secure_password
 default['transmission']['rpc_port']         = 9091
+default['transmission']['rpc_whitelist'] = '127.0.0.1'
+default['transmission']['rpc_whitelist_enabled'] = 'true'
 
 default['transmission']['home']             = '/var/lib/transmission-daemon'
 default['transmission']['config_dir']       = '/var/lib/transmission-daemon/info'
