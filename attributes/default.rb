@@ -55,3 +55,16 @@ default['transmission']['speed_limit_down']         = 100 #KB/s
 default['transmission']['speed_limit_down_enabled'] = 'false'
 default['transmission']['speed_limit_up']           = 100 #KB/s
 default['transmission']['speed_limit_up_enabled']   = 'false'
+default['transmission']['max_peers_global'] = 200
+default['transmission']['peer_limit_global'] = 200
+
+default['transmission']['alt_speed_time_enabled'] =  'false'
+default['transmission']['alt_speed_enabled'] = 'false'
+default['transmission']['alt_speed_down'] = 50 #KB/s
+default['transmission']['alt_speed_up'] = 50 #KB/s
+default['transmission']['alt_speed_time_begin'] = 540 # Minutes from Midnight
+default['transmission']['alt_speed_time_end'] = 1020 # Minutes from Midnight
+default['transmission']['alt_speed_time_day'] = 127
+
+
+default['transmission']['encryption'] = 1 #Specify encryption mode for Peers: 0 = Off, 1 = Preferred, 2 = Forced
