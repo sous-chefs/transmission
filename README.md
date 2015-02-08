@@ -36,8 +36,8 @@ Attributes
 * `node["transmission"]["watch_dir_enabled"]` - Whether the watch file directory is used, default `false`.
 * `node["transmission"]["max_peers_global"]` - Maximum number of peers total (legacy), default 240.
 * `node["transmission"]["peer_limit_global"]` - Maximum number of peers total (current), default 240.
-* `node["transmission"]["alt_speed_time_enabled"]` - Enables the scheduled alternate speed settings, default false.
-* `node["transmission"]["alt_speed_enabled"]` - Enables the alternate speed settings, default false.
+* `node["transmission"]["alt_speed_time_enabled"]` - Enables the scheduled alternate speed settings, default `false`.
+* `node["transmission"]["alt_speed_enabled"]` - Enables the alternate speed settings, default `false`.
 * `node["transmission"]["alt_speed_down"]` - Maximum download speed when alt-speed-enabled, default 50.
 * `node["transmission"]["alt_speed_up"]` - Maximum upload speed when alt-speed-enabled, default 50.
 * `node["transmission"]["alt_speed_time_begin"]` - Number of minutes from midnight at which alternate speed settings are enabled, default 540.
