@@ -1,3 +1,8 @@
+v2.0.5 (2014-02-17)
+-------------------
+- Being explicit about usage of the chef_gem's compile_time property.
+- Eliminating future deprecation warnings in Chef 12.1.0.
+
 v2.0.4 (2014-09-18)
 -------------------
 - [#11] prevent circular symlink for settings.json on Ubuntu 14.04
