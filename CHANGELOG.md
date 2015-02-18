@@ -1,4 +1,8 @@
-v2.0.6 (2014-02-18)
+v2.0.7 (2015-02-18)
+-------------------
+- Updating to use the latest openssl
+
+v2.0.6 (2015-02-18)
 -------------------
 - Fixing chef_gem for Chef below 12.1.0
 
