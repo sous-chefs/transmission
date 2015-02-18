@@ -1,6 +1,6 @@
 name             "transmission"
 maintainer       "Opscode, Inc."
-maintainer_email "cookbooks@opscode.com"
+maintainer_email "cookbooks@chef.io"
 license          "Apache 2.0"
 description      "Installs/Configures transmission"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

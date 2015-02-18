@@ -13,13 +13,13 @@ v2.0.0
 **Requires Ruby 1.9 or higher!**
 
 ### Bug
-- **[COOK-3451](https://tickets.opscode.com/browse/COOK-3451)** - Use Hash#key to silence Hash#index deprecation warnings
-- **[COOK-3450](https://tickets.opscode.com/browse/COOK-3450)** - Delete torrent local data when not seeding
-- **[COOK-3449](https://tickets.opscode.com/browse/COOK-3449)** - Prevent torrent status of checking from prematurely ending blocking downloads
-- **[COOK-3324](https://tickets.opscode.com/browse/COOK-3324)** - Use `BEncode.load_file` to load torrent file when hashing to avoid UTF-8 encoding issues
+- **[COOK-3451](https://tickets.chef.io/browse/COOK-3451)** - Use Hash#key to silence Hash#index deprecation warnings
+- **[COOK-3450](https://tickets.chef.io/browse/COOK-3450)** - Delete torrent local data when not seeding
+- **[COOK-3449](https://tickets.chef.io/browse/COOK-3449)** - Prevent torrent status of checking from prematurely ending blocking downloads
+- **[COOK-3324](https://tickets.chef.io/browse/COOK-3324)** - Use `BEncode.load_file` to load torrent file when hashing to avoid UTF-8 encoding issues
 
 ### Improvement
-- **[COOK-2227](https://tickets.opscode.com/browse/COOK-2227)** - Add watch dir options
+- **[COOK-2227](https://tickets.chef.io/browse/COOK-2227)** - Add watch dir options
 
 v1.0.4
 ------

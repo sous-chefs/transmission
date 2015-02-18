@@ -44,7 +44,7 @@ The file also contains the following attribute types:
 Resource/Provider
 -----------------
 ### `transmission_torrent_file`
-Download a file via the [BitTorrent protocol](http://en.wikipedia.org/wiki/BitTorrent).  The usage semantics are like that of the existing [file](http://wiki.opscode.com/display/chef/Resources#Resources-File) and [remote_file](http://wiki.opscode.com/display/chef/Resources#Resources-RemoteFile) resources.  This allows very fast downloads for files that are part of large BitTorrent swarms.  The Ubuntu 10.04 LTS ISO (around 700MB) downloads in about 50 seconds.
+Download a file via the [BitTorrent protocol](http://en.wikipedia.org/wiki/BitTorrent).  The usage semantics are like that of the existing [file](http://wiki.chef.io/display/chef/Resources#Resources-File) and [remote_file](http://wiki.chef.io/display/chef/Resources#Resources-RemoteFile) resources.  This allows very fast downloads for files that are part of large BitTorrent swarms.  The Ubuntu 10.04 LTS ISO (around 700MB) downloads in about 50 seconds.
 
 #### Actions
 - :create: Download a file via the BitTorrent protocol
@@ -104,7 +104,7 @@ Installs Transmission from source.  This should only be loaded by the default re
 
 License & Authors
 -----------------
-- Author:: Seth Chisamore (<schisamo@opscode.com>)
+- Author:: Seth Chisamore (<schisamo@chef.io>)
 
 ```text
 Copyright 2011, Opscode, Inc.
