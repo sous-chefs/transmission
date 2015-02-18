@@ -1,7 +1,6 @@
-v2.0.5 (2014-02-17)
+v2.0.6 (2014-02-18)
 -------------------
-- Being explicit about usage of the chef_gem's compile_time property.
-- Eliminating future deprecation warnings in Chef 12.1.0.
+- Fixing chef_gem for Chef below 12.1.0
 
 v2.0.4 (2014-09-18)
 -------------------
