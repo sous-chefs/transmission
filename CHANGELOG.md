@@ -1,3 +1,7 @@
+v2.0.9 (2015-02-18)
+-------------------
+- reverting OpenSSL module namespace change
+
 v2.0.8 (2015-02-18)
 -------------------
 - reverting chef_gem compile_time work
