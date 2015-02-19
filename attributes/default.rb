@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-::Chef::Node.send(:include, OpenSSLCookbook::Password)
+::Chef::Node.send(:include, Opscode::OpenSSL::Password)
 
 case node['platform']
 when "ubuntu","debian"
