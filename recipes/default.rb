@@ -24,13 +24,13 @@ include_recipe "transmission::#{node['transmission']['install_method']}"
 # activesupport 3+ won't run under Ruby 1.8.6
 chef_gem "activesupport" do  
   version '2.3.11'
-  compile_time true if respond_to?(:compile_time)
+  compile_time true
   action :install
 end
 
 %w{bencode i18n transmission-simple}.each do |pkg|
   chef_gem pkg do
-    compile_time true if respond_to?(:compile_time)
+    compile_time true
     action :install
   end
 end
