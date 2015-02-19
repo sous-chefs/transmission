@@ -1,3 +1,7 @@
+v2.0.8 (2015-02-18)
+-------------------
+- reverting chef_gem compile_time work
+
 v2.0.7 (2015-02-18)
 -------------------
 - Updating to use the latest openssl
