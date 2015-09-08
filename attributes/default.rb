@@ -20,7 +20,7 @@
 ::Chef::Node.send(:include, Opscode::OpenSSL::Password)
 
 case node['platform']
-when "ubuntu","debian"
+when 'ubuntu', 'debian'
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
@@ -34,7 +34,7 @@ default['transmission']['url']              = 'http://download.transmissionbt.co
 default['transmission']['version']          = '2.03'
 default['transmission']['checksum']         = '06802c6f4ba517341eb287b273145ccd5e7b0fba2a270da82f0eb0a683cf4046'
 
-default['transmission']['peer_port']        = 51413
+default['transmission']['peer_port']        = 51_413
 
 default['transmission']['rpc_bind_address'] = '0.0.0.0'
 default['transmission']['rpc_username']     = 'transmission'
@@ -49,7 +49,7 @@ default['transmission']['watch_dir']        = '/var/lib/transmission-daemon/watc
 default['transmission']['incomplete_dir_enabled'] = 'false'
 default['transmission']['watch_dir_enabled']      = 'false'
 
-default['transmission']['speed_limit_down']         = 100 #KB/s
+default['transmission']['speed_limit_down']         = 100 # KB/s
 default['transmission']['speed_limit_down_enabled'] = 'false'
-default['transmission']['speed_limit_up']           = 100 #KB/s
+default['transmission']['speed_limit_up']           = 100 # KB/s
 default['transmission']['speed_limit_up_enabled']   = 'false'

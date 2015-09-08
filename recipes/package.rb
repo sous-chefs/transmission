@@ -19,10 +19,10 @@
 #
 
 transmission_pkgs = value_for_platform(
-  ["debian","ubuntu"] => {
-    "default" => ["transmission", "transmission-cli", "transmission-daemon"]
+  %w(debian ubuntu) => {
+    'default' => ['transmission', 'transmission-cli', 'transmission-daemon']
   },
-  "default" => ["transmission", "transmission-cli", "transmission-daemon"]
+  'default' => ['transmission', 'transmission-cli', 'transmission-daemon']
 )
 
 transmission_pkgs.each do |pkg|
@@ -31,4 +31,4 @@ transmission_pkgs.each do |pkg|
   end
 end
 
-include_recipe "transmission::default"
+include_recipe 'transmission::default'

@@ -18,18 +18,18 @@
 # limitations under the License.
 #
 
-include_recipe "build-essential"
+include_recipe 'build-essential'
 
 version = node['transmission']['version']
 
 build_pkgs = value_for_platform(
-  ["debian","ubuntu"] => {
-    "default" => ["automake","libtool","pkg-config","libcurl4-openssl-dev","intltool","libxml2-dev","libgtk2.0-dev","libnotify-dev","libglib2.0-dev","libevent-dev"]
+  %w(debian ubuntu) => {
+    'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev']
   },
-  ["centos","redhat","fedora","scientific", "amazon"] => {
-    "default" => ["curl", "curl-devel", "libevent", "libevent-devel", "intltool", "gettext"]
+  %w(centos redhat fedora scientific amazon) => {
+    'default' => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext']
   },
-  "default" => ["automake","libtool","pkg-config","libcurl4-openssl-dev","intltool","libxml2-dev","libgtk2.0-dev","libnotify-dev","libglib2.0-dev","libevent-dev"]
+  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev']
 )
 
 build_pkgs.each do |pkg|
@@ -44,7 +44,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.bz2" 
   action :create_if_missing
 end
 
-bash "compile_transmission" do
+bash 'compile_transmission' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     tar xvjf transmission-#{version}.tar.bz2
@@ -52,7 +52,7 @@ bash "compile_transmission" do
     ./configure -q && make -s
     make install
   EOH
-  creates "/usr/local/bin/transmission-daemon"
+  creates '/usr/local/bin/transmission-daemon'
 end
 
 group node['transmission']['group'] do
@@ -60,7 +60,7 @@ group node['transmission']['group'] do
 end
 
 user node['transmission']['user'] do
-  comment "Transmission Daemon User"
+  comment 'Transmission Daemon User'
   gid node['transmission']['group']
   system true
   home node['transmission']['home']
@@ -70,13 +70,13 @@ end
 directory node['transmission']['home'] do
   owner node['transmission']['user']
   group node['transmission']['group']
-  mode "0755"
+  mode '0755'
 end
 
 directory node['transmission']['config_dir'] do
   owner node['transmission']['user']
   group node['transmission']['group']
-  mode "0755"
+  mode '0755'
 end
 
-include_recipe "transmission::default"
+include_recipe 'transmission::default'

@@ -67,7 +67,7 @@ end
 private
 
 def exists?
-  ::File.exists?(new_resource.path)
+  ::File.exist?(new_resource.path)
 end
 
 def move_and_clean_up
@@ -95,17 +95,17 @@ def cached_torrent
   @torrent_file_path ||= begin
     cache_file_path = "#{Chef::Config[:file_cache_path]}/#{::File.basename(new_resource.torrent)}"
     Chef::Log.debug("Caching a copy of torrent file #{new_resource.torrent} at #{cache_file_path}")
-    if(new_resource.torrent =~ /^(https?:\/\/)(.*\/)(.*\.torrent)$/)
+    if new_resource.torrent =~ /^(https?:\/\/)(.*\/)(.*\.torrent)$/
       r = remote_file cache_file_path do
         source new_resource.torrent
         backup false
-        mode "0755"
+        mode '0755'
       end
     else
       r = file cache_file_path do
         content IO.read(new_resource.torrent)
         backup false
-        mode "0755"
+        mode '0755'
       end
     end
     r.run_action(:create)
@@ -116,6 +116,6 @@ end
 def torrent_hash
   require 'bencode'
   @torrent_hash ||= begin
-    Digest::SHA1.hexdigest((BEncode.load_file(cached_torrent)["info"]).bencode) # thx bakins!
+    Digest::SHA1.hexdigest((BEncode.load_file(cached_torrent)['info']).bencode) # thx bakins!
   end
 end

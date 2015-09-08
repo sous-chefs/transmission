@@ -27,7 +27,6 @@ end
 # all your monkey patches are belong to us
 module TransmissionSimple
   class Torrent < OpenStruct
-
     STATUS_CODES = {
       1 => 'CHECK_WAIT',
       2 => 'CHECK',
@@ -37,23 +36,23 @@ module TransmissionSimple
     }
 
     def downloading?
-      self.status == STATUS_CODES.key('DOWNLOAD')
+      status == STATUS_CODES.key('DOWNLOAD')
     end
 
     def stopped?
-      self.status == STATUS_CODES.key('STOPPED')
+      status == STATUS_CODES.key('STOPPED')
     end
 
     def checking?
-      self.status == STATUS_CODES.key('CHECK') || self.status == STATUS_CODES.key('CHECK_WAIT')
+      status == STATUS_CODES.key('CHECK') || status == STATUS_CODES.key('CHECK_WAIT')
     end
 
     def seeding?
-      self.status == STATUS_CODES.key('SEED')
+      status == STATUS_CODES.key('SEED')
     end
 
     def status_message
-      STATUS_CODES[self.status]
+      STATUS_CODES[status]
     end
   end
 end
@@ -61,23 +60,23 @@ end
 module Opscode
   module Transmission
     class Client
-      DEFAULT_RESPONSE_FIELDS = %w{id name status totalSize percentDone startDate hashString downloadDir files}
+      DEFAULT_RESPONSE_FIELDS = %w(id name status totalSize percentDone startDate hashString downloadDir files)
 
       def initialize(endpoint)
         @transmission = TransmissionSimple::Api.new(endpoint)
       end
 
       def get_torrent(torrent_hash)
-        @transmission.send_request('torrent-get', {:ids => [torrent_hash], :fields => DEFAULT_RESPONSE_FIELDS}).first
+        @transmission.send_request('torrent-get', ids: [torrent_hash], fields: DEFAULT_RESPONSE_FIELDS).first
       end
 
       def add_torrent(torrent_file)
-        t = @transmission.send_request('torrent-add', {:filename => torrent_file})["torrent-added"]
+        t = @transmission.send_request('torrent-add', filename: torrent_file)['torrent-added']
         TransmissionSimple::Torrent.new(t)
       end
 
-      def remove_torrent(torrent_hash, delete_data=false)
-        @transmission.send_request('torrent-remove', {'ids' => [torrent_hash], 'delete-local-data' => delete_data})
+      def remove_torrent(torrent_hash, delete_data = false)
+        @transmission.send_request('torrent-remove', 'ids' => [torrent_hash], 'delete-local-data' => delete_data)
       end
     end
   end
