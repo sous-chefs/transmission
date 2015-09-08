@@ -1,3 +1,7 @@
+transmission Cookbook CHANGELOG
+===============================
+This file is used to list changes made in each version of the transmission cookbook.
+
 v2.0.9 (2015-02-18)
 -------------------
 - reverting OpenSSL module namespace change
