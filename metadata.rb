@@ -9,3 +9,6 @@ version          "2.0.9"
 %w{ openssl build-essential }.each do |cb|
   depends cb
 end
+
+source_url 'https://github.com/chef-cookbooks/transmission' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-cookbooks/transmission/issues' if respond_to?(:issues_url)
