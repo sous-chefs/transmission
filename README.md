@@ -1,5 +1,8 @@
 transmission Cookbook
 =====================
+[![Build Status](https://travis-ci.org/chef-cookbooks/transmission.svg?branch=master)](http://travis-ci.org/chef-cookbooks/transmission)
+[![Cookbook Version](https://img.shields.io/cookbook/v/transmission.svg)](https://supermarket.chef.io/cookbooks/transmission)
+
 Installs the [Transmission BitTorrent Client](http://www.transmissionbt.com) and includes a `transmission_torrent_file` LWRP.
 
 
@@ -107,7 +110,7 @@ License & Authors
 - Author:: Seth Chisamore (<schisamo@chef.io>)
 
 ```text
-Copyright 2011, Chef Software, Inc.
+Copyright 2011-2015, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
