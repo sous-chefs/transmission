@@ -8,13 +8,14 @@ Installs the [Transmission BitTorrent Client](http://www.transmissionbt.com) and
 
 Requirements
 ------------
-### Ruby
-This cookbook requires Ruby 1.9 or higher
+#### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
 
-### Platforms
-Known to work on Debian, Ubuntu, Red Hat and CentOS
+#### Chef
+- Chef 11+
 
-### Cookbooks
+#### Cookbooks
 - build-essential - for compiling the source.
 - openssl - for generating a secure password.
 
@@ -107,11 +108,12 @@ Installs Transmission from source.  This should only be loaded by the default re
 
 License & Authors
 -----------------
-- Author:: Seth Chisamore (<schisamo@chef.io>)
 
-```text
-Copyright 2011-2015, Chef Software, Inc.
+**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
+**Copyright:** 2011-2015, Chef Software, Inc.
+
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
