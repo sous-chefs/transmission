@@ -3,7 +3,7 @@
 # Cookbook Name:: transmission
 # Recipe:: source
 #
-# Copyright 2011, Chef Software, Inc.
+# Copyright 2011-2015, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,13 +22,8 @@ include_recipe 'build-essential'
 
 version = node['transmission']['version']
 
-build_pkgs = value_for_platform(
-  %w(debian ubuntu) => {
-    'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev']
-  },
-  %w(centos redhat fedora scientific amazon) => {
-    'default' => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext']
-  },
+build_pkgs = value_for_platform_family(
+  %w(rhel fedora) => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext'],
   'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev']
 )
 

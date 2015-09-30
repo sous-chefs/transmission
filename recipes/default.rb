@@ -3,7 +3,7 @@
 # Cookbook Name:: transmission
 # Recipe:: default
 #
-# Copyright 2011, Chef Software, Inc.
+# Copyright 2011-2015, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,14 +20,7 @@
 
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
-# Install gems required by LWRP in advance
-# activesupport 3+ won't run under Ruby 1.8.6
-chef_gem 'activesupport' do
-  version '2.3.11'
-  action :install
-end
-
-%w(bencode i18n transmission-simple).each do |pkg|
+%w(bencode i18n transmission-simple activesupport).each do |pkg|
   chef_gem pkg do
     action :install
   end
@@ -36,8 +29,8 @@ end
 require 'transmission-simple'
 
 template 'transmission-default' do
-  case node['platform']
-  when 'centos', 'redhat', 'amazon', 'scientific'
+  case node['platform_family']
+  when 'rhel', 'fedora'
     path '/etc/sysconfig/transmission-daemon'
   else
     path '/etc/default/transmission-daemon'
@@ -64,7 +57,7 @@ end
 directory '/etc/transmission-daemon' do
   owner 'root'
   group node['transmission']['group']
-  mode '755'
+  mode '0755'
 end
 
 template "#{node['transmission']['config_dir']}/settings.json" do
