@@ -3,7 +3,7 @@
 # Cookbook Name:: transmission
 # Provider:: torrent_file
 #
-# Copyright:: 2011, Chef Software, Inc <legal@chef.io>
+# Copyright:: 2011-2015, Chef Software, Inc. <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
