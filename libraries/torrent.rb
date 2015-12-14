@@ -81,11 +81,3 @@ module Opscode
     end
   end
 end
-
-# Ruby 1.8.6 doesn't have tap...thx CentOS
-class Object
-  def tap
-    yield self
-    self
-  end
-end
