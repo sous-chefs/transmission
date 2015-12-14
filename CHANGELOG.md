@@ -1,6 +1,19 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## v2.0.10 (2015-12-14)
+- Set the minimum supported Chef release to 11
+- Removed the monkeypatch to Ruby 1.8.6 support
+- Resolved all rubocop warnings
+- Added testing with Travis CI
+- Added chefignore file
+- Swaped Digital Ocean Test Kitchen config for Docker
+- Added standard Chef .rubocop.yml
+- Updated contributing and testing docs
+- Added Gemfile with development deps
+- Added maintainers file
+- Added a Rakefile for simplified testing
+
 ## v2.0.9 (2015-02-18)
 - reverting OpenSSL module namespace change
 
