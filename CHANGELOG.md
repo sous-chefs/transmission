@@ -1,6 +1,9 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## v2.1.1 (2016-01-08)
+- Add supports metadata for all supported platforms
+
 ## v2.1.0 (2016-01-08)
 - Fixed installation via source on RHEL systems by adding openssl / tar packages to the source recipe
 - Switched to platform_family to better support derivitive operating systems
