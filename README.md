@@ -6,7 +6,10 @@ Installs the [Transmission BitTorrent Client](http://www.transmissionbt.com) and
 ## Requirements
 ### Platforms
 - Debian/Ubuntu
-- RHEL/CentOS/Scientific/Amazon/Oracle
+- RHEL/CentOS/Scientific/Amazon/Oracle 7+
+- Fedora
+
+Note: Package installs are only availabe on Ubuntu/Debian. Source installs are possible on all platforms
 
 ### Chef
 - Chef 11+
@@ -97,7 +100,7 @@ Installs Transmission from source.  This should only be loaded by the default re
 ## License & Authors
 **Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
 
-**Copyright:** 2011-2015, Chef Software, Inc.
+**Copyright:** 2011-2016, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
