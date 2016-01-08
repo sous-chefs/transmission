@@ -41,6 +41,15 @@ platforms:
       - /usr/bin/apt-get install apt-transport-https net-tools -y
 
 suites:
-  - name: default
+  - name: package
     run_list:
       - recipe[transmission::default]
+    includes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+  - name: source
+    run_list:
+      - recipe[transmission::default]
+    attributes:
+      transmission:
+        install_method: source

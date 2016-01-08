@@ -19,6 +19,17 @@ platforms:
     run_list: apt::default
 
 suites:
-  - name: default
+  - name: package
     run_list:
       - recipe[transmission::default]
+    includes:
+      - ubuntu-12.04
+      - ubuntu-14.04
+      - debian-7.8
+      - debian-8.1
+  - name: source
+    run_list:
+      - recipe[transmission::default]
+    attributes:
+      transmission:
+        install_method: source
