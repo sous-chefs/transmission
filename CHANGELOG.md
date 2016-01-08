@@ -1,6 +1,14 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## v2.1.0 (2016-01-08)
+- Fixed installation via source on RHEL systems by adding openssl / tar packages to the source recipe
+- Switched to platform_family to better support derivitive operating systems
+- Updated to the latest version of Transmission for source installs
+- Switched from .bz2 to .xz format archives for source installs as .bz2 archives are no longer being published. Xz tools will now be installed in the source recipe
+- Added source test suite in Test Kitchen
+- Removed support for RHEL releases before 7 as the version of libevent shipped in these distros is too old to compile tranmission
+
 ## v2.0.10 (2015-12-14)
 - Set the minimum supported Chef release to 11
 - Removed the monkeypatch to Ruby 1.8.6 support
