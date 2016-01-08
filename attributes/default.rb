@@ -19,8 +19,8 @@
 
 ::Chef::Node.send(:include, Opscode::OpenSSL::Password)
 
-case node['platform']
-when 'ubuntu', 'debian'
+case node['platform_family']
+when 'debian'
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
