@@ -31,8 +31,8 @@ else
 end
 
 default['transmission']['url']              = 'http://download.transmissionbt.com/files'
-default['transmission']['version']          = '2.03'
-default['transmission']['checksum']         = '06802c6f4ba517341eb287b273145ccd5e7b0fba2a270da82f0eb0a683cf4046'
+default['transmission']['version']          = '2.84'
+default['transmission']['checksum']         = 'a9fc1936b4ee414acc732ada04e84339d6755cd0d097bcbd11ba2cfc540db9eb'
 
 default['transmission']['peer_port']        = 51_413
 

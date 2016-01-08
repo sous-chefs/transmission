@@ -23,8 +23,8 @@ include_recipe 'build-essential'
 version = node['transmission']['version']
 
 build_pkgs = value_for_platform_family(
-  %w(rhel fedora) => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext', 'tar'],
-  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev']
+  %w(rhel fedora) => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext', 'tar', 'xz', 'openssl-devel'],
+  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev', 'xz-utils']
 )
 
 build_pkgs.each do |pkg|
@@ -33,8 +33,8 @@ build_pkgs.each do |pkg|
   end
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.bz2" do
-  source "#{node['transmission']['url']}/transmission-#{version}.tar.bz2"
+remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" do
+  source "#{node['transmission']['url']}/transmission-#{version}.tar.xz"
   checksum node['transmission']['checksum']
   action :create_if_missing
 end
@@ -42,7 +42,7 @@ end
 bash 'compile_transmission' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    tar xvjf transmission-#{version}.tar.bz2
+    tar xvJf transmission-#{version}.tar.xz
     cd transmission-#{version}
     ./configure -q && make -s
     make install
