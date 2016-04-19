@@ -95,19 +95,19 @@ def cached_torrent
   @torrent_file_path ||= begin
     cache_file_path = "#{Chef::Config[:file_cache_path]}/#{::File.basename(new_resource.torrent)}"
     Chef::Log.debug("Caching a copy of torrent file #{new_resource.torrent} at #{cache_file_path}")
-    if new_resource.torrent =~ /^(https?:\/\/)(.*\/)(.*\.torrent)$/
-      r = remote_file cache_file_path do
-        source new_resource.torrent
-        backup false
-        mode '0755'
-      end
-    else
-      r = file cache_file_path do
-        content IO.read(new_resource.torrent)
-        backup false
-        mode '0755'
-      end
-    end
+    r = if new_resource.torrent =~ /^(https?:\/\/)(.*\/)(.*\.torrent)$/
+          remote_file cache_file_path do
+            source new_resource.torrent
+            backup false
+            mode '0755'
+          end
+        else
+          file cache_file_path do
+            content IO.read(new_resource.torrent)
+            backup false
+            mode '0755'
+          end
+        end
     r.run_action(:create)
     cache_file_path
   end

@@ -33,7 +33,7 @@ module TransmissionSimple
       4 => 'DOWNLOAD',
       8 => 'SEED',
       16 => 'STOPPED'
-    }
+    }.freeze
 
     def downloading?
       status == STATUS_CODES.key('DOWNLOAD')
@@ -60,7 +60,7 @@ end
 module Opscode
   module Transmission
     class Client
-      DEFAULT_RESPONSE_FIELDS = %w(id name status totalSize percentDone startDate hashString downloadDir files)
+      DEFAULT_RESPONSE_FIELDS = %w(id name status totalSize percentDone startDate hashString downloadDir files).freeze
 
       def initialize(endpoint)
         @transmission = TransmissionSimple::Api.new(endpoint)
