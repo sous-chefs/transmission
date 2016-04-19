@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+use_inline_resources
+
 require 'digest/sha1'
 require 'chef/mixin/checksum'
 include Chef::Mixin::Checksum
