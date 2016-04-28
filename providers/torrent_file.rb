@@ -42,7 +42,15 @@ end
 
 action :create do
   unless exists?
-    unless @torrent
+    if @torrent
+      if @new_resource.blocking || @torrent.downloading?
+        Chef::Log.debug("Downloading #{@new_resource}...#{@torrent.percent_done * 100}% complete")
+        move_and_clean_up if new_resource.continue_seeding # needed if torrent already in swarm
+      else
+        move_and_clean_up
+        new_resource.updated_by_last_action(true)
+      end
+    else
       @torrent = @transmission.add_torrent(cached_torrent)
       Chef::Log.info("Added #{@new_resource} to the swarm with a name of '#{@torrent.name}'")
       if @new_resource.blocking
@@ -53,14 +61,6 @@ action :create do
         end while @torrent.downloading? || @torrent.checking?
         move_and_clean_up
         new_resource.updated_by_last_action(true)
-      end
-    else
-      unless @new_resource.blocking || @torrent.downloading?
-        move_and_clean_up
-        new_resource.updated_by_last_action(true)
-      else
-        Chef::Log.debug("Downloading #{@new_resource}...#{@torrent.percent_done * 100}% complete")
-        move_and_clean_up if new_resource.continue_seeding # needed if torrent already in swarm
       end
     end
   end
