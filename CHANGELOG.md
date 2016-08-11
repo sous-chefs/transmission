@@ -1,6 +1,14 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## 2.2.0 (2016-08-11)
+- Fix up chef_gem compile time warnings.
+- Add support for transmission whitelist settings.
+- Add use_inline_resources
+- Add conditional to support older versions of chef.
+- Update testing
+- Specif version 4.x of activesupport to fix installs on Ruby 2.1 Chef omnibus
+
 ## v2.1.1 (2016-01-08)
 - Add supports metadata for all supported platforms
 
