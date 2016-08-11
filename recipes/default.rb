@@ -20,7 +20,13 @@
 
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
-%w(bencode i18n transmission-simple activesupport).each do |pkg|
+chef_gem 'activesupport' do
+  version '<5.0'
+  action :install
+  compile_time true if Chef::Resource::ChefGem.method_defined?(:compile_time)
+end
+
+%w(bencode i18n transmission-simple).each do |pkg|
   chef_gem pkg do
     action :install
     compile_time true if Chef::Resource::ChefGem.method_defined?(:compile_time)
