@@ -1,0 +1,16 @@
+# rubocop todo
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'libraries/torrent.rb'
+
+Lint/Loop:
+  Exclude:
+    - 'providers/torrent_file.rb'
+
+Metrics/BlockNesting:
+  Max: 4
+
+Style/RegexpLiteral:
+  Exclude:
+    - 'providers/torrent_file.rb'
