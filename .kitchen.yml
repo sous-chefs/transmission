@@ -8,7 +8,7 @@ platforms:
   - name: centos-7.2
   - name: debian-7.10
     run_list: apt::default
-  - name: debian-8.4
+  - name: debian-8.5
     run_list: apt::default
   - name: fedora-22
     run_list: yum::dnf_yum_compat
