@@ -30,9 +30,9 @@ else
   default['transmission']['group']          = 'transmission'
 end
 
-default['transmission']['url']              = 'http://download.transmissionbt.com/files'
-default['transmission']['version']          = '2.84'
-default['transmission']['checksum']         = 'a9fc1936b4ee414acc732ada04e84339d6755cd0d097bcbd11ba2cfc540db9eb'
+default['transmission']['url']              = 'https://github.com/transmission/transmission-releases/raw/master/'
+default['transmission']['version']          = '2.92'
+default['transmission']['checksum']         = '3a8d045c306ad9acb7bf81126939b9594553a388482efa0ec1bfb67b22acd35f'
 
 default['transmission']['peer_port']        = 51_413
 
