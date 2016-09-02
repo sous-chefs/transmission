@@ -1,6 +1,11 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## 2.2.1 (2016-09-01)
+- Add chef_version
+- Testing updates
+- Pull transmission from Github and use 2.92
+
 ## 2.2.0 (2016-08-11)
 - Fix up chef_gem compile time warnings.
 - Add support for transmission whitelist settings.
