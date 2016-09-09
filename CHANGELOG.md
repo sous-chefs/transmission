@@ -1,6 +1,10 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## 3.0.0 (2016-09-08)
+- Add matchers
+- Require Chef 12.1+
+
 ## 2.2.1 (2016-09-01)
 - Add chef_version
 - Testing updates
