@@ -16,7 +16,7 @@ Note: Package installs are only available on Ubuntu/Debian. Source installs are 
 
 ### Chef
 
-- Chef 12+
+- Chef 12.1+
 
 ### Cookbooks
 
