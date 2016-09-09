@@ -22,8 +22,10 @@ env:
   matrix:
   - INSTANCE=package-ubuntu-1204
   - INSTANCE=package-ubuntu-1404
+  - INSTANCE=package-ubuntu-1604
   - INSTANCE=source-ubuntu-1204
   - INSTANCE=source-ubuntu-1404
+  - INSTANCE=source-ubuntu-1604
   - INSTANCE=source-centos-7
 
 before_script:
