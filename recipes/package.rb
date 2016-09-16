@@ -18,17 +18,11 @@
 # limitations under the License.
 #
 
-transmission_pkgs = value_for_platform(
-  %w(debian ubuntu) => {
-    'default' => ['transmission', 'transmission-cli', 'transmission-daemon']
-  },
-  'default' => ['transmission', 'transmission-cli', 'transmission-daemon']
-)
-
-transmission_pkgs.each do |pkg|
-  package pkg do
-    action :install
-  end
+case node['platform_family']
+when 'debian', 'ubuntu'
+  package %w(transmission transmission-cli transmission-daemon)
+else
+  package %w(transmission transmission-cli transmission-daemon)
 end
 
 include_recipe 'transmission::default'
