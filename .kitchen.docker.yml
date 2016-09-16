@@ -87,6 +87,9 @@ suites:
     includes:
       - ubuntu-12.04
       - ubuntu-14.04
+      - ubuntu-16.04
+      - debian-7
+      - debian-8
   - name: source
     run_list:
       - recipe[transmission::default]
