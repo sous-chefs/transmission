@@ -24,14 +24,10 @@ version = node['transmission']['version']
 
 build_pkgs = value_for_platform_family(
   %w(rhel fedora) => ['curl', 'curl-devel', 'libevent', 'libevent-devel', 'intltool', 'gettext', 'tar', 'xz', 'openssl-devel'],
-  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev', 'xz-utils']
+  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev', 'libssl-dev', 'xz-utils']
 )
 
-build_pkgs.each do |pkg|
-  package pkg do
-    action :install
-  end
-end
+package build_pkgs
 
 remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" do
   source "#{node['transmission']['url']}/transmission-#{version}.tar.xz"
