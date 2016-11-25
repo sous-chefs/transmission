@@ -1,6 +1,6 @@
 #
 # Author:: Seth Chisamore (<schisamo@chef.io>)
-# Cookbook Name:: transmission
+# Cookbook:: transmission
 # Recipe:: default
 #
 # Copyright:: 2011-2016, Chef Software, Inc.
