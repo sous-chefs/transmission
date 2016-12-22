@@ -32,7 +32,7 @@ module TransmissionSimple
       2 => 'CHECK',
       4 => 'DOWNLOAD',
       8 => 'SEED',
-      16 => 'STOPPED'
+      16 => 'STOPPED',
     }.freeze
 
     def downloading?
