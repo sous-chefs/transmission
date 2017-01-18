@@ -1,11 +1,22 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## 4.0.0 (2017-01-18)
+
+- Use multipackage to speed up package installs
+- Expand platform testing and fix 16.04 package tests
+- Make sure we have ssl libs on debian systems
+- Remove the chef 11 compatibility check in chef_gem
+- Switch back to stable ChefDK builds for testing
+- Require Chef 12.14 to get ruby 2.2.2+ which is needed for the gems that are installed by this cookbook
+
 ## 3.0.0 (2016-09-08)
+
 - Add matchers
 - Require Chef 12.1+
 
 ## 2.2.1 (2016-09-01)
+
 - Add chef_version
 - Testing updates
 - Pull transmission from Github and use 2.92
