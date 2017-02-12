@@ -36,18 +36,18 @@ default['transmission']['checksum']         = '3a8d045c306ad9acb7bf81126939b9594
 
 default['transmission']['peer_port']        = 51_413
 
-default['transmission']['rpc_bind_address'] = '0.0.0.0'
-default['transmission']['rpc_username']     = 'transmission'
-set_unless['transmission']['rpc_password']  = secure_password
-default['transmission']['rpc_port']         = 9091
+default['transmission']['rpc_bind_address']    = '0.0.0.0'
+default['transmission']['rpc_username']        = 'transmission'
+normal_unless['transmission']['rpc_password']  = secure_password
+default['transmission']['rpc_port']            = 9091
 
 default['transmission']['rpc_whitelist_enabled']	= true
-default['transmission']['rpc_whitelist']	= '127.0.0.1'
-default['transmission']['home']             = '/var/lib/transmission-daemon'
-default['transmission']['config_dir']       = '/var/lib/transmission-daemon/info'
-default['transmission']['download_dir']     = '/var/lib/transmission-daemon/downloads'
-default['transmission']['incomplete_dir']   = '/var/lib/transmission-daemon/incomplete'
-default['transmission']['watch_dir']        = '/var/lib/transmission-daemon/watch'
+default['transmission']['rpc_whitelist']	        = '127.0.0.1'
+default['transmission']['home']                   = '/var/lib/transmission-daemon'
+default['transmission']['config_dir']             = '/var/lib/transmission-daemon/info'
+default['transmission']['download_dir']           = '/var/lib/transmission-daemon/downloads'
+default['transmission']['incomplete_dir']         = '/var/lib/transmission-daemon/incomplete'
+default['transmission']['watch_dir']              = '/var/lib/transmission-daemon/watch'
 default['transmission']['incomplete_dir_enabled'] = 'false'
 default['transmission']['watch_dir_enabled']      = 'false'
 
