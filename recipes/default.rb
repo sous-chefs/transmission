@@ -57,6 +57,7 @@ template "#{node['transmission']['config_dir']}/settings.json" do
   owner 'root'
   group 'root'
   mode '0644'
+  manage_symlink_source true
   notifies :reload, 'service[transmission]', :immediately
 end
 
