@@ -3,7 +3,7 @@
 # Cookbook:: transmission
 # Recipe:: package
 #
-# Copyright:: 2011-2016, Chef Software, Inc.
+# Copyright:: 2011-2017, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,11 +18,6 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'debian', 'ubuntu'
-  package %w(transmission transmission-cli transmission-daemon)
-else
-  package %w(transmission transmission-cli transmission-daemon)
-end
+package %w(transmission transmission-cli transmission-daemon)
 
 include_recipe 'transmission::default'
