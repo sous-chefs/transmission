@@ -20,13 +20,6 @@
 
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
-%w(bencode i18n transmission-simple activesupport).each do |pkg|
-  chef_gem pkg do
-    action :install
-    compile_time true
-  end
-end
-
 require 'transmission-simple'
 
 template 'transmission-default' do
