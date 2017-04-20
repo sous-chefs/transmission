@@ -20,8 +20,6 @@
 
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
-require 'transmission-simple'
-
 template 'transmission-default' do
   case node['platform_family']
   when 'rhel', 'fedora'
