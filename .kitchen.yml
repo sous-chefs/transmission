@@ -12,7 +12,7 @@ platforms:
   - name: centos-7.3
   - name: debian-7.11
     run_list: apt::default
-  - name: debian-8.6
+  - name: debian-8.7
     run_list: apt::default
   - name: fedora-25
   - name: ubuntu-14.04
@@ -34,7 +34,7 @@ suites:
       - ubuntu-14.04
       - ubuntu-16.04
       - debian-7.11
-      - debian-8.6
+      - debian-8.7
       - ubuntu-16.04-chef-12.14
   - name: source
     run_list:
