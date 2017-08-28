@@ -1,6 +1,10 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## 4.0.1 (2017-08-18)
+
+- Add attributes for controling seed ratio
+
 ## 4.0.0 (2017-01-18)
 
 - Use multipackage to speed up package installs
