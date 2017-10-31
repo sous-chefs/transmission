@@ -128,6 +128,14 @@ describe 'transmission::default' do
     it 'requires transmission-simple gem' do
       expect(chef_run).to run_ruby_block('require transmission-simple gem')
     end
+
+    it 'configures the service' do
+      expect(chef_run).to enable_service('transmission')
+        .with(service_name: 'transmission-daemon')
+        .with(supports: { restart: true,
+                          reload: true })
+        .with(action: [:enable, :start])
+    end
   end
 
   context 'When install_method is from source' do
