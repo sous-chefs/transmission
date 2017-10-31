@@ -39,6 +39,17 @@ describe 'transmission::default' do
       runner.converge(described_recipe)
     end
 
+    it 'installs chef gems' do
+      expect(chef_run).to install_chef_gem('bencode')
+        .with(compile_time: true)
+      expect(chef_run).to install_chef_gem('i18n')
+        .with(compile_time: true)
+      expect(chef_run).to install_chef_gem('transmission-simple')
+        .with(compile_time: true)
+      expect(chef_run).to install_chef_gem('activesupport')
+        .with(compile_time: true)
+    end
+
     it 'requires transmission-simple gem' do
       expect(chef_run).to run_ruby_block('require transmission-simple gem')
     end
