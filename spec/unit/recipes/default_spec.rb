@@ -15,6 +15,19 @@ describe 'transmission::default' do
       expect(chef_run.node['transmission']['user']).to eq 'debian-transmission'
       expect(chef_run.node['transmission']['group']).to eq 'debian-transmission'
     end
+
+    it 'creates the transmission-default file' do
+      expect(chef_run).to create_template('transmission-default')
+        .with(path: '/etc/default/transmission-daemon')
+        .with(source: 'transmission-daemon.default.erb')
+        .with(owner: 'root')
+        .with(group: 'root')
+        .with(mode: '0644')
+      expect(chef_run).to render_file('/etc/default/transmission-daemon')
+        .with_content { |content|
+          expect(content).to match('CONFIG_DIR="/var/lib/transmission-daemon/info"')
+        }
+    end
   end
 
   context 'When running on a non-Debian platform' do
@@ -30,6 +43,68 @@ describe 'transmission::default' do
     it 'sets default user and group' do
       expect(chef_run.node['transmission']['user']).to eq 'transmission'
       expect(chef_run.node['transmission']['group']).to eq 'transmission'
+    end
+  end
+
+  context 'When running on RHEL' do
+    let(:chef_run) do
+      runner = ChefSpec::SoloRunner.new(platform: 'redhat', version: '7.2')
+      runner.converge(described_recipe)
+    end
+
+    it 'creates the transmission-default file' do
+      expect(chef_run).to create_template('transmission-default')
+        .with(path: '/etc/sysconfig/transmission-daemon')
+        .with(source: 'transmission-daemon.default.erb')
+        .with(owner: 'root')
+        .with(group: 'root')
+        .with(mode: '0644')
+      expect(chef_run).to render_file('/etc/sysconfig/transmission-daemon')
+        .with_content { |content|
+          expect(content).to match('CONFIG_DIR="/var/lib/transmission-daemon/info"')
+        }
+    end
+  end
+
+  context 'When running on Fedora' do
+    let(:chef_run) do
+      runner = ChefSpec::SoloRunner.new(platform: 'fedora', version: '24')
+      runner.converge(described_recipe)
+    end
+
+    it 'creates the transmission-default file' do
+      expect(chef_run).to create_template('transmission-default')
+        .with(path: '/etc/sysconfig/transmission-daemon')
+        .with(source: 'transmission-daemon.default.erb')
+        .with(owner: 'root')
+        .with(group: 'root')
+        .with(mode: '0644')
+      expect(chef_run).to render_file('/etc/sysconfig/transmission-daemon')
+        .with_content { |content|
+          expect(content).to match('CONFIG_DIR="/var/lib/transmission-daemon/info"')
+        }
+    end
+  end
+
+  context 'When overriding the config_dir' do
+    let(:chef_run) do
+      runner = ChefSpec::SoloRunner.new(platform: 'debian', version: '8.2') do |node|
+        node.automatic['transmission']['config_dir'] = '/var/transmission-config'
+      end
+      runner.converge(described_recipe)
+    end
+
+    it 'creates the transmission-default file' do
+      expect(chef_run).to create_template('transmission-default')
+        .with(path: '/etc/default/transmission-daemon')
+        .with(source: 'transmission-daemon.default.erb')
+        .with(owner: 'root')
+        .with(group: 'root')
+        .with(mode: '0644')
+      expect(chef_run).to render_file('/etc/default/transmission-daemon')
+        .with_content { |content|
+          expect(content).to match('CONFIG_DIR="/var/transmission-config"')
+        }
     end
   end
 
