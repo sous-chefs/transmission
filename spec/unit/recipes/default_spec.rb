@@ -110,7 +110,9 @@ describe 'transmission::default' do
 
   context 'When platform does not matter' do
     let(:chef_run) do
-      runner = ChefSpec::SoloRunner.new(platform: 'centos', version: '7.2.1511')
+      runner = ChefSpec::SoloRunner.new(platform: 'centos', version: '7.2.1511') do |node|
+        node.automatic['transmission']['group'] = 'downloads'
+      end
       runner.converge(described_recipe)
     end
 
@@ -135,6 +137,13 @@ describe 'transmission::default' do
         .with(supports: { restart: true,
                           reload: true })
         .with(action: [:enable, :start])
+    end
+
+    it 'creates the transmission-daemon directory' do
+      expect(chef_run).to create_directory('/etc/transmission-daemon')
+        .with(owner: 'root')
+        .with(group: 'downloads')
+        .with(mode: '0755')
     end
   end
 
