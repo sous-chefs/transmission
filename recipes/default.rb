@@ -27,7 +27,11 @@ include_recipe "transmission::#{node['transmission']['install_method']}"
   end
 end
 
-require 'transmission-simple'
+ruby_block 'require transmission-simple gem' do
+  block do
+    require 'transmission-simple'
+  end
+end
 
 template 'transmission-default' do
   case node['platform_family']

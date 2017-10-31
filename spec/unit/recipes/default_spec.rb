@@ -32,4 +32,15 @@ describe 'transmission::default' do
       expect(chef_run.node['transmission']['group']).to eq 'transmission'
     end
   end
+
+  context 'When platform does not matter' do
+    let(:chef_run) do
+      runner = ChefSpec::SoloRunner.new(platform: 'centos', version: '7.2.1511')
+      runner.converge(described_recipe)
+    end
+
+    it 'requires transmission-simple gem' do
+      expect(chef_run).to run_ruby_block('require transmission-simple gem')
+    end
+  end
 end
