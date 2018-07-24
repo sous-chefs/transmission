@@ -20,13 +20,14 @@
 
 use_inline_resources # ~FC113
 
+require 'transmission-simple'
 require 'digest/sha1'
 require 'chef/mixin/checksum'
 include Chef::Mixin::Checksum
 include Opscode::Transmission
 
 def load_current_resource
-  @current_resource = Chef::Resource::TransmissionTorrentFile.new(@new_resource.name)
+  @current_resource = new_resource.class.new(new_resource.name)
   Chef::Log.debug("#{@new_resource} torrent hash = #{torrent_hash}")
   @transmission = Opscode::Transmission::Client.new("http://#{@new_resource.rpc_username}:#{@new_resource.rpc_password}@#{@new_resource.rpc_host}:#{@new_resource.rpc_port}/transmission/rpc")
   @torrent = nil
