@@ -51,6 +51,9 @@ default['transmission']['watch_dir']              = '/var/lib/transmission-daemo
 default['transmission']['incomplete_dir_enabled'] = 'false'
 default['transmission']['watch_dir_enabled']      = 'false'
 
+default['transmission']['ratio_limit'] = '2.0000'
+default['transmission']['ratio_limit_enabled'] = false
+
 default['transmission']['speed_limit_down']         = 100 # KB/s
 default['transmission']['speed_limit_down_enabled'] = 'false'
 default['transmission']['speed_limit_up']           = 100 # KB/s

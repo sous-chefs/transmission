@@ -39,6 +39,8 @@ Note: Package installs are only available on Ubuntu/Debian. Source installs are 
 - `node["transmission"]["speed_limit_down_enabled"]` - Whether the download limit is used, default `false`.
 - `node["transmission"]["speed_limit_up"]` - The KB/s limit for uploading files, default `100`.
 - `node["transmission"]["speed_limit_up_enabled"]` - Whether the upload limit is used, default `false`.
+- `node["transmission"]["ratio_limit"]` - Ratio at which to seed the torrent, default `2.0000`.
+- `node["transmission"]["ratio_limit_enabled"]` - Whether the ratio limit is used, default `false`.
 - `node["transmission"]["watch_dir"]` - Directory to watch for new torrent files, default `/var/lib/transmission-daemon/watch`.
 - `node["transmission"]["watch_dir_enabled"]` - Whether the watch file directory is used, default `false`.
 

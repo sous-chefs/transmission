@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 require 'transmission-simple'
 require 'digest/sha1'
