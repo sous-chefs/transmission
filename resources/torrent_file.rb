@@ -23,7 +23,7 @@ default_action :create
 
 attribute :path, kind_of: String, name_attribute: true
 attribute :torrent, kind_of: String
-attribute :blocking, kind_of: [true, false], default: true
+attribute :blocking, kind_of: [TrueClass, FalseClass], default: true
 attribute :continue_seeding, default: false
 attribute :owner, regex: Chef::Config[:user_valid_regex]
 attribute :group, regex: Chef::Config[:group_valid_regex]
