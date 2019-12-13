@@ -21,8 +21,7 @@
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
 template 'transmission-default' do
-  case node['platform_family']
-  when 'rhel', 'fedora'
+  if platform_family?('rhel', 'fedora')
     path '/etc/sysconfig/transmission-daemon'
   else
     path '/etc/default/transmission-daemon'
