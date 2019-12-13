@@ -19,8 +19,7 @@
 
 ::Chef::Node.send(:include, Opscode::OpenSSL::Password)
 
-case node['platform_family']
-when 'debian'
+if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
@@ -41,8 +40,8 @@ default['transmission']['rpc_username']        = 'transmission'
 normal_unless['transmission']['rpc_password']  = secure_password
 default['transmission']['rpc_port']            = 9091
 
-default['transmission']['rpc_whitelist_enabled']	= true
-default['transmission']['rpc_whitelist']	        = '127.0.0.1'
+default['transmission']['rpc_whitelist_enabled']  = true
+default['transmission']['rpc_whitelist']          = '127.0.0.1'
 default['transmission']['home']                   = '/var/lib/transmission-daemon'
 default['transmission']['config_dir']             = '/var/lib/transmission-daemon/info'
 default['transmission']['download_dir']           = '/var/lib/transmission-daemon/downloads'
