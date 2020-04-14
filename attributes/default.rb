@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-::Chef::Node.send(:include, Opscode::OpenSSL::Password)
+::Chef::Node.include Opscode::OpenSSL::Password
 
 if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
