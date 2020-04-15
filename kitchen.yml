@@ -14,9 +14,7 @@ platforms:
     run_list: apt::default
   - name: debian-10
     run_list: apt::default
-  - name: fedora-29
-  - name: ubuntu-14.04
-    run_list: apt::default
+  - name: fedora-latest
   - name: ubuntu-16.04
     run_list: apt::default
   - name: ubuntu-16.04-chef-12.14
@@ -31,9 +29,10 @@ suites:
     run_list:
       - recipe[transmission::default]
     includes:
-      - ubuntu-14.04
       - ubuntu-16.04
-      - debian-8
+      - ubuntu-18.04
+      - debian-9
+      - debian-10
   - name: source
     run_list:
       - recipe[transmission::default]

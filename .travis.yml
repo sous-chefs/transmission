@@ -18,7 +18,8 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=package-debian-8
+  - INSTANCE=package-debian-9
+  - INSTANCE=package-debian-10
   - INSTANCE=package-ubuntu-1604
   - INSTANCE=source-ubuntu-1604
   - INSTANCE=source-centos-7
