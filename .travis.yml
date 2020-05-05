@@ -21,7 +21,9 @@ env:
   - INSTANCE=package-debian-9
   - INSTANCE=package-debian-10
   - INSTANCE=package-ubuntu-1604
+  - INSTANCE=package-ubuntu-1804
   - INSTANCE=source-ubuntu-1604
+  - INSTANCE=source-ubuntu-1804
   - INSTANCE=source-centos-7
 
 before_script:

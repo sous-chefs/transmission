@@ -14,7 +14,7 @@ depends 'openssl'
 source_url 'https://github.com/chef-cookbooks/transmission'
 issues_url 'https://github.com/chef-cookbooks/transmission/issues'
 
-chef_version '>= 12.15'
+chef_version '>= 14'
 
 gem 'bencode'
 gem 'i18n'
