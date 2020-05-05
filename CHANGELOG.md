@@ -1,6 +1,12 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+## Unreleased
+
+- resolved cookstyle error: attributes/default.rb:20:14 warning: `Lint/SendWithMixinArgument`
+- resolved cookstyle error: metadata.rb:12:1 refactor: `ChefStyle/OverlyComplexSupportsDependsMetadata`
+- resolved cookstyle error: metadata.rb:13:1 refactor: `ChefModernize/UnnecessaryDependsChef14`
+
 ## 4.0.1 (2017-08-18)
 
 - Add attributes for controling seed ratio

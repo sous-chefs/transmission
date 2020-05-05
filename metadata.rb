@@ -9,9 +9,7 @@ version '4.0.1'
   supports os
 end
 
-%w( openssl build-essential ).each do |cb|
-  depends cb
-end
+depends 'openssl'
 
 source_url 'https://github.com/chef-cookbooks/transmission'
 issues_url 'https://github.com/chef-cookbooks/transmission/issues'
