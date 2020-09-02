@@ -53,11 +53,12 @@ action :create do
       @torrent = @transmission.add_torrent(cached_torrent)
       Chef::Log.info("Added #{@new_resource} to the swarm with a name of '#{@torrent.name}'")
       if @new_resource.blocking
-        begin
+        loop do
           @torrent = @transmission.get_torrent(@torrent.hash_string)
           Chef::Log.debug("Downloading #{@new_resource}...#{@torrent.percent_done * 100}% complete")
           sleep 3
-        end while @torrent.downloading? || @torrent.checking?
+          break unless @torrent.downloading? || @torrent.checking?
+        end
         move_and_clean_up
         new_resource.updated_by_last_action(true)
       end
