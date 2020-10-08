@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - resolved cookstyle error: attributes/default.rb:20:14 warning: `Lint/SendWithMixinArgument`
 - resolved cookstyle error: metadata.rb:12:1 refactor: `ChefStyle/OverlyComplexSupportsDependsMetadata`
 - resolved cookstyle error: metadata.rb:13:1 refactor: `ChefModernize/UnnecessaryDependsChef14`
+- Cookstyle fixes
 
 ## 4.0.1 (2017-08-18)
 

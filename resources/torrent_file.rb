@@ -24,9 +24,9 @@ default_action :create
 attribute :path, kind_of: String, name_attribute: true
 attribute :torrent, kind_of: String
 attribute :blocking, kind_of: [TrueClass, FalseClass], default: true
-attribute :continue_seeding, default: false
-attribute :owner, regex: Chef::Config[:user_valid_regex]
-attribute :group, regex: Chef::Config[:group_valid_regex]
+attribute :continue_seeding, kind_of: [TrueClass, FalseClass], default: false
+attribute :owner, kind_of: String, regex: Chef::Config[:user_valid_regex]
+attribute :group, kind_of: String, regex: Chef::Config[:group_valid_regex]
 attribute :rpc_host, kind_of: String, default: 'localhost'
 attribute :rpc_port, kind_of: Integer, default: 9091
 attribute :rpc_username, kind_of: String, default: 'transmission'
