@@ -21,7 +21,7 @@ platforms:
     run_list: apt::default
   - name: fedora-latest
   - name: ubuntu-16.04
-    run_list: apt::default  
+    run_list: apt::default
   - name: ubuntu-18.04
     run_list: apt::default
   - name: ubuntu-20.04
