@@ -1,7 +1,17 @@
 # transmission Cookbook CHANGELOG
 This file is used to list changes made in each version of the transmission cookbook.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## Unreleased
+
+### Changed
+
+- Sous Chefs Adoption
+- Update Changelog to Sous Chefs
+
+### Fixed
 
 - resolved cookstyle error: providers/torrent_file.rb:76:60 convention: `Style/RedundantParentheses`
 - resolved cookstyle error: attributes/default.rb:20:14 warning: `Lint/SendWithMixinArgument`
