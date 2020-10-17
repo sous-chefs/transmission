@@ -4,8 +4,10 @@ driver:
 
 provisioner:
   name: chef_zero
+  product_name: chef
+  enforce_idempotency: true
+  multiple_converge: 2
   deprecations_as_errors: true
-  chef_license: accept-no-persist
 
 verifier:
   name: inspec
@@ -16,18 +18,12 @@ platforms:
   - name: centos-7
   - name: centos-8
   - name: debian-9
-    run_list: apt::default
   - name: debian-10
-    run_list: apt::default
   - name: fedora-latest
   - name: ubuntu-16.04
-    run_list: apt::default
   - name: ubuntu-18.04
-    run_list: apt::default
   - name: ubuntu-20.04
-    run_list: apt::default
   - name: ubuntu-16.04-chef-12.14
-    run_list: apt::default
     driver_config:
       box: bento/ubuntu-16.04
     provisioner:
@@ -37,12 +33,6 @@ suites:
   - name: package
     run_list:
       - recipe[transmission::default]
-    includes:
-      - ubuntu-16.04
-      - ubuntu-18.04
-      - ubuntu-20.04
-      - debian-9
-      - debian-10
   - name: source
     run_list:
       - recipe[transmission::default]

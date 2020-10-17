@@ -3,18 +3,13 @@ driver:
   name: dokken
   privileged: true  # because Docker and SystemD
   chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
-  chef_license: accept-no-persist
+  env: [CHEF_LICENSE=accept]
 
 transport:
   name: dokken
 
 provisioner:
   name: dokken
-  deprecations_as_errors: true
-  chef_license: accept-no-persist
-
-verifier:
-  name: inspec
 
 platforms:
   - name: amazonlinux
@@ -101,14 +96,3 @@ platforms:
     driver:
       image: dokken/opensuse-leap-15
       pid_one_command: /bin/systemd
-
-suites:
-  - name: package
-    run_list:
-      - recipe[transmission::default]
-  - name: source
-    run_list:
-      - recipe[transmission::default]
-    attributes:
-      transmission:
-        install_method: source
