@@ -1,20 +1,26 @@
-name 'transmission'
-maintainer 'Chef Software, Inc.'
-maintainer_email 'cookbooks@chef.io'
-license 'Apache-2.0'
-description 'Installs and configures transmission'
-version '4.0.1'
+name              'transmission'
+maintainer        'Sous Chefs'
+maintainer_email  'help@sous-chefs.org'
+license           'Apache-2.0'
+description       'Installs and configures transmission'
+version           '4.0.1'
+source_url        'https://github.com/sous-chefs/transmission'
+issues_url        'https://github.com/sous-chefs/transmission/issues'
+chef_version      '>= 14'
 
-%w(ubuntu debian redhat centos suse scientific oracle amazon fedora opensuse opensuseleap).each do |os|
-  supports os
-end
+supports 'amazon'
+supports 'centos'
+supports 'debian'
+supports 'fedora'
+supports 'opensuse'
+supports 'opensuseleap'
+supports 'oracle'
+supports 'redhat'
+supports 'scientific'
+supports 'suse'
+supports 'ubuntu'
 
 depends 'openssl'
-
-source_url 'https://github.com/chef-cookbooks/transmission'
-issues_url 'https://github.com/chef-cookbooks/transmission/issues'
-
-chef_version '>= 14'
 
 gem 'bencode'
 gem 'i18n'
