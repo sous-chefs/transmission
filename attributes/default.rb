@@ -31,8 +31,8 @@ else
 end
 
 default['transmission']['url']              = 'https://github.com/transmission/transmission-releases/raw/master/'
-default['transmission']['version']          = '2.92'
-default['transmission']['checksum']         = '3a8d045c306ad9acb7bf81126939b9594553a388482efa0ec1bfb67b22acd35f'
+default['transmission']['version']          = '3.00'
+default['transmission']['checksum']         = '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
 
 default['transmission']['peer_port']        = 51_413
 
