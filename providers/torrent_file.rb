@@ -73,7 +73,7 @@ def exists?
 end
 
 def move_and_clean_up
-  Chef::Log.info("#{@new_resource} download completed in #{(Time.now.to_i - @torrent.start_date)} seconds")
+  Chef::Log.info("#{@new_resource} download completed in #{Time.now.to_i - @torrent.start_date} seconds")
   torrent_download_path = ::File.join(@torrent.download_dir, @torrent.files.first.name)
   if new_resource.continue_seeding
     link new_resource.path do
