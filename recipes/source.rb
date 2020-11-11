@@ -22,12 +22,7 @@ build_essential 'install compilation tools'
 
 version = node['transmission']['version']
 
-build_pkgs = value_for_platform_family(
-  %w(rhel fedora amazon) => %w(curl curl-devel libevent libevent-devel intltool gettext tar xz openssl-devel),
-  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev', 'libssl-dev', 'xz-utils']
-)
-
-package build_pkgs
+package transmission_build_pkgs
 
 remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" do
   source "#{node['transmission']['url']}/transmission-#{version}.tar.xz"

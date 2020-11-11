@@ -32,6 +32,14 @@ module Transmission
       def transmission_watch_dir
         "#{transmission_home}/watch"
       end
+
+      def transmission_build_pkgs
+        if platform_family?('rhel', 'fedora', 'amazon')
+          %w(curl curl-devel libevent libevent-devel intltool gettext tar xz openssl-devel)
+        else
+          %w(automake libtool pkg-config libcurl4-openssl-dev intltool libxml2-dev libgtk2.0-dev libnotify-dev libglib2.0-dev libevent-dev libssl-dev xz-utils)
+        end
+      end
     end
   end
 end
