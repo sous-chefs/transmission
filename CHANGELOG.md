@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update test-kitchen to Sous Chefs
 - Update to version 3.00 for source installation
 
+### Added
+
+- InSpec test profile
+
 ### Fixed
 
 - resolved cookstyle error: providers/torrent_file.rb:76:60 convention: `Style/RedundantParentheses`

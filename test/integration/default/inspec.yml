@@ -1,0 +1,6 @@
+---
+name: transmission-integration-tests
+title: Integration tests for transmission cookbook
+summary: This InSpec profile contains integration tests for transmission cookbook
+supports:
+  - os-family: linux

@@ -32,9 +32,17 @@ suites:
   - name: package
     run_list:
       - recipe[transmission::default]
+    verifier:
+      inspec_tests:
+        - name: transmission-integration-tests
+          path: test/integration/default
   - name: source
     run_list:
       - recipe[transmission::default]
     attributes:
       transmission:
         install_method: source
+    verifier:
+      inspec_tests:
+        - name: transmission-integration-tests
+          path: test/integration/default
