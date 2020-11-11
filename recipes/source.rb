@@ -54,17 +54,17 @@ user node['transmission']['user'] do
   comment 'Transmission Daemon User'
   gid node['transmission']['group']
   system true
-  home node['transmission']['home']
+  home transmission_home
   action :create
 end
 
-directory node['transmission']['home'] do
+directory transmission_home do
   owner node['transmission']['user']
   group node['transmission']['group']
   mode '0755'
 end
 
-directory node['transmission']['config_dir'] do
+directory transmission_config_dir do
   owner node['transmission']['user']
   group node['transmission']['group']
   mode '0755'

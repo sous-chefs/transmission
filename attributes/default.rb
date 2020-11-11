@@ -24,6 +24,10 @@ if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
+elsif platform_family?('rhel')
+  default['transmission']['install_method'] = 'package'
+  default['transmission']['user']           = 'transmission'
+  default['transmission']['group']          = 'transmission'
 else
   default['transmission']['install_method'] = 'source'
   default['transmission']['user']           = 'transmission'
@@ -43,11 +47,6 @@ default['transmission']['rpc_port']            = 9091
 
 default['transmission']['rpc_whitelist_enabled']  = true
 default['transmission']['rpc_whitelist']          = '127.0.0.1'
-default['transmission']['home']                   = '/var/lib/transmission-daemon'
-default['transmission']['config_dir']             = '/var/lib/transmission-daemon/info'
-default['transmission']['download_dir']           = '/var/lib/transmission-daemon/downloads'
-default['transmission']['incomplete_dir']         = '/var/lib/transmission-daemon/incomplete'
-default['transmission']['watch_dir']              = '/var/lib/transmission-daemon/watch'
 default['transmission']['incomplete_dir_enabled'] = 'false'
 default['transmission']['watch_dir_enabled']      = 'false'
 

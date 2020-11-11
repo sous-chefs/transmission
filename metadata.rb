@@ -21,6 +21,7 @@ supports 'suse'
 supports 'ubuntu'
 
 depends 'openssl'
+depends 'yum-epel'
 
 gem 'bencode'
 gem 'i18n'
