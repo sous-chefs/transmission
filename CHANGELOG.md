@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove Amazon Linux 1 testing
 - Remove EL 6 testing
+- Remove init.d scripts
 
 ## 4.0.1 (2017-08-18)
 
