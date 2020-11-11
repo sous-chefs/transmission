@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe 'yum-epel' if platform_family?('rhel')
+include_recipe 'yum-epel' if platform_family?('rhel', 'amazon')
 
 package %w(transmission transmission-cli transmission-daemon)
 

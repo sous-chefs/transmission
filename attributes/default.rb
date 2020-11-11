@@ -24,7 +24,7 @@ if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
-elsif platform_family?('rhel')
+elsif platform_family?('rhel', 'amazon')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'transmission'
   default['transmission']['group']          = 'transmission'
