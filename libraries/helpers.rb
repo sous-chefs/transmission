@@ -35,9 +35,9 @@ module Transmission
 
       def transmission_build_pkgs
         if platform_family?('rhel', 'fedora', 'amazon')
-          %w(curl curl-devel libevent libevent-devel intltool gettext tar xz openssl-devel)
+          %w(curl-devel dbus-glib-devel gettext glib2-devel intltool libevent-devel libnatpmp-devel libnotify-devel libxml2-devel openssl-devel tar xz)
         else
-          %w(automake libtool pkg-config libcurl4-openssl-dev intltool libxml2-dev libgtk2.0-dev libnotify-dev libglib2.0-dev libevent-dev libssl-dev xz-utils)
+          %w(automake intltool libcurl4-openssl-dev libdbus-glib-1-dev libevent-dev libglib2.0-dev libnatpmp-dev libnotify-dev libssl-dev libtool libxml2-dev pkg-config xz-utils)
         end
       end
     end

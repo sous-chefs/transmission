@@ -32,6 +32,9 @@ suites:
   - name: package
     run_list:
       - recipe[transmission::default]
+    attributes:
+      transmission:
+        rpc_password: changeme
     verifier:
       inspec_tests:
         - name: transmission-integration-tests
@@ -42,6 +45,7 @@ suites:
     attributes:
       transmission:
         install_method: source
+        rpc_password: changeme
     verifier:
       inspec_tests:
         - name: transmission-integration-tests

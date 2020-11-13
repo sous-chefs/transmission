@@ -26,16 +26,18 @@ template transmission_defaults do
   notifies :reload, 'service[transmission]'
 end
 
-directory '/etc/systemd/system/transmission-daemon.service.d'
+if node['transmission']['install_method'] == 'package'
+  directory '/etc/systemd/system/transmission-daemon.service.d'
 
-template '/etc/systemd/system/transmission-daemon.service.d/10-override.conf' do
-  variables(defaults: transmission_defaults)
-  notifies :run, 'execute[systemctl daemon-reload]', :immediately
-  notifies :reload, 'service[transmission]'
-end
+  template '/etc/systemd/system/transmission-daemon.service.d/10-override.conf' do
+    variables(defaults: transmission_defaults)
+    notifies :run, 'execute[systemctl daemon-reload]', :immediately
+    notifies :reload, 'service[transmission]'
+  end
 
-execute 'systemctl daemon-reload' do
-  action :nothing
+  execute 'systemctl daemon-reload' do
+    action :nothing
+  end
 end
 
 directory '/etc/transmission-daemon' do
