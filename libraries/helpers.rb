@@ -2,7 +2,7 @@ module Transmission
   module Cookbook
     module Helpers
       def transmission_defaults
-        if platform_family?('rhel', 'fedora')
+        if platform_family?('rhel', 'fedora', 'amazon')
           '/etc/sysconfig/transmission-daemon'
         else
           '/etc/default/transmission-daemon'
