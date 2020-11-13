@@ -45,8 +45,6 @@ jobs:
           - 'debian-10'
           - 'centos-7'
           - 'centos-8'
-          - 'oraclelinux-7'
-          - 'oraclelinux-8'
           - 'fedora-latest'
           - 'ubuntu-1604'
           - 'ubuntu-1804'
