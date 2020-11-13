@@ -32,13 +32,15 @@ remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" d
   action :create_if_missing
 end
 
+enable_natpmp = platform_family?('suse') ? '' : '--enable-external-natpmp'
+
 bash 'compile_transmission' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     tar xvJf transmission-#{version}.tar.xz
     cd transmission-#{version}
     ./configure -q --disable-static --enable-utp --enable-daemon \
-      --enable-nls --enable-cli --enable-external-natpmp
+      --enable-nls --enable-cli #{enable_natpmp}
     make -s
     make install
   EOH

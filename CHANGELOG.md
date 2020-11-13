@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - MDL fixes
 - Fix CentOS/Fedora installation
 - Source installation issues
+- Fix SUSE source installation
 
 ### Removed
 
