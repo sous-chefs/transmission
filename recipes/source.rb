@@ -22,12 +22,9 @@ build_essential 'install compilation tools'
 
 version = node['transmission']['version']
 
-build_pkgs = value_for_platform_family(
-  %w(rhel fedora amazon) => %w(curl curl-devel libevent libevent-devel intltool gettext tar xz openssl-devel),
-  'default' => ['automake', 'libtool', 'pkg-config', 'libcurl4-openssl-dev', 'intltool', 'libxml2-dev', 'libgtk2.0-dev', 'libnotify-dev', 'libglib2.0-dev', 'libevent-dev', 'libssl-dev', 'xz-utils']
-)
+include_recipe 'yum-epel' if platform_family?('rhel', 'fedora', 'amazon')
 
-package build_pkgs
+package transmission_build_pkgs
 
 remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" do
   source "#{node['transmission']['url']}/transmission-#{version}.tar.xz"
@@ -35,15 +32,39 @@ remote_file "#{Chef::Config[:file_cache_path]}/transmission-#{version}.tar.xz" d
   action :create_if_missing
 end
 
+enable_natpmp = platform_family?('suse') ? '' : '--enable-external-natpmp'
+
 bash 'compile_transmission' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     tar xvJf transmission-#{version}.tar.xz
     cd transmission-#{version}
-    ./configure -q && make -s
+    ./configure -q --disable-static --enable-utp --enable-daemon \
+      --enable-nls --enable-cli #{enable_natpmp}
+    make -s
     make install
   EOH
   creates '/usr/local/bin/transmission-daemon'
+end
+
+systemd_unit 'transmission-daemon.service' do
+  content <<~EOU
+  [Unit]
+  Description=Transmission BitTorrent Daemon
+  After=network.target
+
+  [Service]
+  User=#{node['transmission']['user']}
+  Type=simple
+  EnvironmentFile=-#{transmission_defaults}
+  ExecStart=/usr/local/bin/transmission-daemon -f --log-error $OPTIONS
+  ExecStop=/bin/kill -s STOP $MAINPID
+  ExecReload=/bin/kill -s HUP $MAINPID
+
+  [Install]
+  WantedBy=multi-user.target
+  EOU
+  action :create
 end
 
 group node['transmission']['group'] do
@@ -54,19 +75,17 @@ user node['transmission']['user'] do
   comment 'Transmission Daemon User'
   gid node['transmission']['group']
   system true
-  home node['transmission']['home']
+  home transmission_home
   action :create
 end
 
-directory node['transmission']['home'] do
+directory transmission_home do
   owner node['transmission']['user']
   group node['transmission']['group']
   mode '0755'
 end
 
-directory node['transmission']['config_dir'] do
-  owner node['transmission']['user']
-  group node['transmission']['group']
+directory transmission_config_dir do
   mode '0755'
 end
 

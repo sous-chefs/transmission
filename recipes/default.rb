@@ -20,29 +20,24 @@
 
 include_recipe "transmission::#{node['transmission']['install_method']}"
 
-template 'transmission-default' do
-  if platform_family?('rhel', 'fedora')
-    path '/etc/sysconfig/transmission-daemon'
-  else
-    path '/etc/default/transmission-daemon'
-  end
+template transmission_defaults do
   source 'transmission-daemon.default.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
+  variables(config_dir: transmission_config_dir)
+  notifies :reload, 'service[transmission]'
 end
 
-template '/etc/init.d/transmission-daemon' do
-  source 'transmission-daemon.init.erb'
-  owner 'root'
-  group 'root'
-  mode '0755'
-end
+if node['transmission']['install_method'] == 'package'
+  directory '/etc/systemd/system/transmission-daemon.service.d'
 
-service 'transmission' do
-  service_name 'transmission-daemon'
-  supports restart: true, reload: true
-  action [:enable, :start]
+  template '/etc/systemd/system/transmission-daemon.service.d/10-override.conf' do
+    variables(defaults: transmission_defaults)
+    notifies :run, 'execute[systemctl daemon-reload]', :immediately
+    notifies :reload, 'service[transmission]'
+  end
+
+  execute 'systemctl daemon-reload' do
+    action :nothing
+  end
 end
 
 directory '/etc/transmission-daemon' do
@@ -51,16 +46,30 @@ directory '/etc/transmission-daemon' do
   mode '0755'
 end
 
-template "#{node['transmission']['config_dir']}/settings.json" do
+directory "#{transmission_config_dir}/info" do
+  recursive true
+end
+
+template "#{transmission_config_dir}/settings.json" do
   source 'settings.json.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
+  owner node['transmission']['user']
+  group node['transmission']['group']
   manage_symlink_source true
+  variables(
+    download_dir: transmission_download_dir,
+    incomplete_dir: transmission_incomplete_dir,
+    watch_dir: transmission_watch_dir
+  )
   notifies :reload, 'service[transmission]', :immediately
 end
 
 link '/etc/transmission-daemon/settings.json' do
-  to "#{node['transmission']['config_dir']}/settings.json"
-  not_if { File.symlink?("#{node['transmission']['config_dir']}/settings.json") }
+  to "#{transmission_config_dir}/settings.json"
+  not_if { File.symlink?("#{transmission_config_dir}/settings.json") }
+end
+
+service 'transmission' do
+  service_name 'transmission-daemon'
+  supports restart: true, reload: true
+  action [:enable, :start]
 end

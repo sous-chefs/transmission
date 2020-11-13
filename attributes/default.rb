@@ -17,12 +17,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-::Chef::Node.include Opscode::OpenSSL::Password
+# TODO(ramereth): Fix this properly someday
+::Chef::Node.include Opscode::OpenSSL::Password # rubocop:disable ChefCorrectness/OpenSSLPasswordHelpers
 
 if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
   default['transmission']['group']          = 'debian-transmission'
+elsif platform_family?('rhel', 'amazon', 'fedora')
+  default['transmission']['install_method'] = 'package'
+  default['transmission']['user']           = 'transmission'
+  default['transmission']['group']          = 'transmission'
 else
   default['transmission']['install_method'] = 'source'
   default['transmission']['user']           = 'transmission'
@@ -30,8 +35,8 @@ else
 end
 
 default['transmission']['url']              = 'https://github.com/transmission/transmission-releases/raw/master/'
-default['transmission']['version']          = '2.92'
-default['transmission']['checksum']         = '3a8d045c306ad9acb7bf81126939b9594553a388482efa0ec1bfb67b22acd35f'
+default['transmission']['version']          = '3.00'
+default['transmission']['checksum']         = '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
 
 default['transmission']['peer_port']        = 51_413
 
@@ -42,11 +47,6 @@ default['transmission']['rpc_port']            = 9091
 
 default['transmission']['rpc_whitelist_enabled']  = true
 default['transmission']['rpc_whitelist']          = '127.0.0.1'
-default['transmission']['home']                   = '/var/lib/transmission-daemon'
-default['transmission']['config_dir']             = '/var/lib/transmission-daemon/info'
-default['transmission']['download_dir']           = '/var/lib/transmission-daemon/downloads'
-default['transmission']['incomplete_dir']         = '/var/lib/transmission-daemon/incomplete'
-default['transmission']['watch_dir']              = '/var/lib/transmission-daemon/watch'
 default['transmission']['incomplete_dir_enabled'] = 'false'
 default['transmission']['watch_dir_enabled']      = 'false'
 
