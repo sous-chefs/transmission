@@ -5,6 +5,12 @@ This file is used to list changes made in each version of the transmission cookb
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+- resolved cookstyle error: providers/torrent_file.rb:120:21 convention: `Style/RedundantBegin`
+- resolved cookstyle error: providers/torrent_file.rb:121:1 convention: `Layout/EmptyLinesAroundMethodBody`
+- resolved cookstyle error: providers/torrent_file.rb:121:1 convention: `Layout/TrailingWhitespace`
+
 ## 5.0.0 (2020-11-13)
 
 ### Changed
