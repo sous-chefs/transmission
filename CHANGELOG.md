@@ -5,6 +5,8 @@ This file is used to list changes made in each version of the transmission cookb
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
 ## 5.0.1 - *2021-03-25*
 
 - resolved cookstyle error: providers/torrent_file.rb:120:21 convention: `Style/RedundantBegin`
