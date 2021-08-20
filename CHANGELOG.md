@@ -5,7 +5,7 @@ This file is used to list changes made in each version of the transmission cookb
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 6.0.0 - *2021-08-20*
 
 - Set unified_mode on resources for Chef 17 support
 - Require Chef 15.3+ for unified_mode support
