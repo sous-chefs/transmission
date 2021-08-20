@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set unified_mode on resources for Chef 17 support
 - Require Chef 15.3+ for unified_mode support
 
+## 5.0.3 - *2021-08-14*
+
+- Standardising files in line with updated recommendations
+
 ## 5.0.2 - *2021-06-01*
 
 - Standardise files with files in sous-chefs/repo-management
