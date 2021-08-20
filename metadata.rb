@@ -6,7 +6,7 @@ description       'Installs and configures transmission'
 version           '5.0.2'
 source_url        'https://github.com/sous-chefs/transmission'
 issues_url        'https://github.com/sous-chefs/transmission/issues'
-chef_version      '>= 14'
+chef_version      '>= 15.3'
 
 supports 'amazon'
 supports 'centos'
