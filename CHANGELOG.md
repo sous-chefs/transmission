@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- resolved cookstyle error: metadata.rb:23:1 refactor: `Chef/Modernize/DependsOnOpensslCookbook`
 ## 5.0.3 - *2021-08-14*
 
 - Standardising files in line with updated recommendations
