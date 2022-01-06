@@ -10,11 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - resolved cookstyle error: tasks/maintainers.rb:37:7 convention: `Style/FileWrite`
 - resolved cookstyle error: metadata.rb:23:1 refactor: `Chef/Modernize/DependsOnOpensslCookbook`
 
+## 6.0.0 - *2021-08-20*
+
+- Set unified_mode on resources for Chef 17 support
+- Require Chef 15.3+ for unified_mode support
+
 ## 5.0.3 - *2021-08-14*
 
 - Standardising files in line with updated recommendations
 
 ## 5.0.2 - *2021-06-01*
+
+- Standardise files with files in sous-chefs/repo-management
 
 ## 5.0.1 - *2021-03-25*
 
@@ -24,8 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 5.0.0 (2020-11-13)
 
-### Changed
-
 - Sous Chefs Adoption
 - Update Changelog to Sous Chefs
 - Update to use Sous Chefs GH workflow
@@ -33,13 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update metadata.rb to Sous Chefs
 - Update test-kitchen to Sous Chefs
 - Update to version 3.00 for source installation
-
-### Added
-
-- InSpec test profile
-
-### Fixed
-
+- Added InSpec test profile
 - resolved cookstyle error: providers/torrent_file.rb:76:60 convention: `Style/RedundantParentheses`
 - resolved cookstyle error: attributes/default.rb:20:14 warning: `Lint/SendWithMixinArgument`
 - resolved cookstyle error: metadata.rb:12:1 refactor: `ChefStyle/OverlyComplexSupportsDependsMetadata`
@@ -50,9 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix CentOS/Fedora installation
 - Source installation issues
 - Fix SUSE source installation
-
-### Removed
-
 - Remove Amazon Linux 1 testing
 - Remove EL 6 testing
 - Remove init.d scripts
@@ -147,20 +143,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Requires Ruby 1.9 or higher!**
 
-### Bug
-
 - **[COOK-3451](https://tickets.chef.io/browse/COOK-3451)** - Use Hash#key to silence Hash#index deprecation warnings
 - **[COOK-3450](https://tickets.chef.io/browse/COOK-3450)** - Delete torrent local data when not seeding
 - **[COOK-3449](https://tickets.chef.io/browse/COOK-3449)** - Prevent torrent status of checking from prematurely ending blocking downloads
 - **[COOK-3324](https://tickets.chef.io/browse/COOK-3324)** - Use `BEncode.load_file` to load torrent file when hashing to avoid UTF-8 encoding issues
-
-### Improvement
-
 - **[COOK-2227](https://tickets.chef.io/browse/COOK-2227)** - Add watch dir options
 
 ## v1.0.4
-
-### Bug
 
 - [COOK-2981]: transmission cookbook has foodcritic errors
 
