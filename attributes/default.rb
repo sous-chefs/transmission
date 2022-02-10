@@ -17,9 +17,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TODO(ramereth): Fix this properly someday
-::Chef::Node.include Opscode::OpenSSL::Password
-
 if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
   default['transmission']['user']           = 'debian-transmission'
