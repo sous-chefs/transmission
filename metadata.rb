@@ -19,8 +19,6 @@ supports 'redhat'
 supports 'scientific'
 supports 'suse'
 supports 'ubuntu'
-
-depends 'openssl'
 depends 'yum-epel'
 
 gem 'bencode'
