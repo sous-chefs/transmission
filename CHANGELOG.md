@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - resolved cookstyle error: tasks/maintainers.rb:37:7 convention: `Style/FileWrite`
 - resolved cookstyle error: metadata.rb:23:1 refactor: `Chef/Modernize/DependsOnOpensslCookbook`
+- resolved cookstyle error: Chef/Deprecations/Delivery: Do not include a .delivery directory for the delivery command in your cookbooks. Chef Delivery (Workflow) went EOL Dec 31st 2021 and the delivery command was removed from Chef Workstation Feb 2022. (<https://docs.chef.io/workstation/cookstyle/chef_deprecations_delivery>)
+- resolved cookstyle error: Chef/Correctness/OpenSSLPasswordHelpers: The secure_password helper from the openssl cookbooks Opscode::OpenSSL::Password class should not be used to generate passwords. (<https://docs.chef.io/workstation/cookstyle/chef_correctness_opensslpasswordhelpers>)
+::Chef::Node.include Opscode::OpenSSL::Password
 
 ## 6.0.0 - *2021-08-20*
 

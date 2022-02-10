@@ -18,7 +18,7 @@
 # limitations under the License.
 
 # TODO(ramereth): Fix this properly someday
-::Chef::Node.include Opscode::OpenSSL::Password # rubocop:disable ChefCorrectness/OpenSSLPasswordHelpers
+::Chef::Node.include Opscode::OpenSSL::Password
 
 if platform_family?('debian')
   default['transmission']['install_method'] = 'package'
