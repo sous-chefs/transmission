@@ -39,7 +39,6 @@ default['transmission']['peer_port']        = 51_413
 
 default['transmission']['rpc_bind_address']    = '0.0.0.0'
 default['transmission']['rpc_username']        = 'transmission'
-normal_unless['transmission']['rpc_password']  = secure_password
 default['transmission']['rpc_port']            = 9091
 
 default['transmission']['rpc_whitelist_enabled']  = true
