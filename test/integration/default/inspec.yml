@@ -1,5 +1,5 @@
 ---
-name: transmission-integration-tests
+name: test
 title: Integration tests for transmission cookbook
 summary: This InSpec profile contains integration tests for transmission cookbook
 supports:

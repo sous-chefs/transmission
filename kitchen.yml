@@ -31,22 +31,15 @@ platforms:
 suites:
   - name: package
     run_list:
-      - recipe[transmission::default]
+      - recipe[test::default]
     attributes:
       transmission:
         rpc_password: changeme
-    verifier:
-      inspec_tests:
-        - name: transmission-integration-tests
-          path: test/integration/default
   - name: source
     run_list:
-      - recipe[transmission::default]
+      - recipe[test::default]
     attributes:
       transmission:
         install_method: source
         rpc_password: changeme
-    verifier:
-      inspec_tests:
-        - name: transmission-integration-tests
-          path: test/integration/default
+
