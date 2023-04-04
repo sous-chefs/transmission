@@ -8,7 +8,7 @@ name: ci
 
 jobs:
   lint-unit:
-    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@0.0.3
+    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@2.0.2
 
   integration:
     needs: lint-unit
@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install Chef
         uses: actionshub/chef-install@main
       - name: Dokken
@@ -47,6 +47,6 @@ jobs:
       - name: Print debug output on failure
         if: failure()
         run: |
-            set -x
-            sudo journalctl -l --since today
-            KITCHEN_LOCAL_YAML=kitchen.dokken.yml /usr/bin/kitchen exec ${{ matrix.suite }}-${{ matrix.os }} -c "journalctl -l"
+          set -x
+          sudo journalctl -l --since today
+          KITCHEN_LOCAL_YAML=kitchen.dokken.yml /usr/bin/kitchen exec ${{ matrix.suite }}-${{ matrix.os }} -c "journalctl -l"
