@@ -109,6 +109,6 @@ action_class do
 
   def torrent_hash
     require 'bencode'
-    @torrent_hash ||= Digest::SHA1.hexdigest((BEncode.load_file(cached_torrent)['info']).bencode) # thx bakins!
+    @torrent_hash ||= Digest::SHA1.hexdigest(BEncode.load_file(cached_torrent)['info'].bencode) # thx bakins!
   end
 end
