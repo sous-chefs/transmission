@@ -5,6 +5,13 @@ This file is used to list changes made in each version of the transmission cookb
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.10](https://github.com/sous-chefs/transmission/compare/6.0.9...v6.0.10) (2025-10-16)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#64](https://github.com/sous-chefs/transmission/issues/64)) ([9ea3f5e](https://github.com/sous-chefs/transmission/commit/9ea3f5e534360fcf0dc0b03ffd436d827ae47638))
+
 ## 6.0.2 - *2023-04-04*
 
 * Standardise files with files in sous-chefs/repo-management
