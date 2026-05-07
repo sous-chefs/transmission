@@ -1,7 +1,25 @@
+# frozen_string_literal: true
+
 module Transmission
   module Cookbook
     module Helpers
-      def transmission_defaults
+      def default_install_method
+        platform_family?('debian', 'rhel', 'amazon', 'fedora') ? 'package' : 'source'
+      end
+
+      def default_user
+        platform_family?('debian') ? 'debian-transmission' : 'transmission'
+      end
+
+      def default_group
+        platform_family?('debian') ? 'debian-transmission' : 'transmission'
+      end
+
+      def default_package_names
+        %w(transmission transmission-cli transmission-daemon)
+      end
+
+      def transmission_defaults_path
         if platform_family?('rhel', 'fedora', 'amazon')
           '/etc/sysconfig/transmission-daemon'
         else
@@ -9,7 +27,7 @@ module Transmission
         end
       end
 
-      def transmission_home
+      def transmission_home_path
         if platform_family?('rhel', 'fedora')
           '/var/lib/transmission'
         else
@@ -17,34 +35,31 @@ module Transmission
         end
       end
 
-      def transmission_config_dir
-        "#{transmission_home}/info"
+      def transmission_config_path
+        "#{transmission_home_path}/info"
       end
 
-      def transmission_download_dir
-        "#{transmission_home}/downloads"
+      def transmission_download_path
+        "#{transmission_home_path}/downloads"
       end
 
-      def transmission_incomplete_dir
-        "#{transmission_home}/incomplete"
+      def transmission_incomplete_path
+        "#{transmission_home_path}/incomplete"
       end
 
-      def transmission_watch_dir
-        "#{transmission_home}/watch"
+      def transmission_watch_path
+        "#{transmission_home_path}/watch"
       end
 
       def transmission_build_pkgs
         if platform_family?('rhel', 'fedora', 'amazon')
-          %w(curl-devel dbus-glib-devel gettext glib2-devel intltool libevent-devel libnatpmp-devel libnotify-devel libxml2-devel openssl-devel tar xz)
+          %w(cmake gcc gcc-c++ make curl-devel gettext libevent-devel libnatpmp-devel openssl-devel tar xz)
         elsif platform_family?('suse')
-          %w(libcurl-devel dbus-1-glib-devel gettext-tools glib2-devel intltool libevent-devel libnotify-devel libxml2-devel libopenssl-devel tar xz)
+          %w(cmake gcc gcc-c++ make libcurl-devel gettext-tools libevent-devel libopenssl-devel tar xz)
         else
-          %w(automake intltool libcurl4-openssl-dev libdbus-glib-1-dev libevent-dev libglib2.0-dev libnatpmp-dev libnotify-dev libssl-dev libtool libxml2-dev pkg-config xz-utils)
+          %w(cmake g++ gcc make libcurl4-openssl-dev libevent-dev libnatpmp-dev libssl-dev pkg-config xz-utils)
         end
       end
     end
   end
 end
-
-Chef::DSL::Recipe.include Transmission::Cookbook::Helpers
-Chef::Resource.include Transmission::Cookbook::Helpers
