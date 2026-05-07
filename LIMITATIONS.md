@@ -20,7 +20,7 @@ not publish a dedicated APT, DNF/YUM, or Zypper repository for Linux server pack
 
 ### Zypper (SUSE)
 
-* openSUSE Leap packages are distribution maintained. Source installation remains available when
+* openSUSE Leap 16 packages are distribution maintained. Source installation remains available when
   package availability differs by release.
 
 ## Architecture Limitations
@@ -36,7 +36,7 @@ development packages, then builds from the upstream release tarball.
 ### Build Dependencies
 
 | Platform Family | Packages |
-|-----------------|----------|
+| --- | --- |
 | Debian | `cmake`, `g++`, `gcc`, `make`, `libcurl4-openssl-dev`, `libevent-dev`, `libnatpmp-dev`, `libssl-dev`, `pkg-config`, `xz-utils` |
 | RHEL/Amazon/Fedora | `cmake`, `gcc`, `gcc-c++`, `make`, `curl-devel`, `gettext`, `libevent-devel`, `libnatpmp-devel`, `openssl-devel`, `tar`, `xz` |
 | SUSE | `cmake`, `gcc`, `gcc-c++`, `make`, `libcurl-devel`, `gettext-tools`, `libevent-devel`, `libopenssl-devel`, `tar`, `xz` |
@@ -49,7 +49,7 @@ development packages, then builds from the upstream release tarball.
 
 ## Sources
 
-* Ubuntu package data: https://packages.ubuntu.com/noble/transmission-daemon
-* Debian package data: https://packages.debian.org/transmission
-* Fedora/EPEL package data: https://packages.fedoraproject.org/pkgs/transmission/transmission/
-* Upstream build guidance: https://github.com/transmission/transmission
+* Ubuntu package data: <https://packages.ubuntu.com/noble/transmission-daemon>
+* Debian package data: <https://packages.debian.org/transmission>
+* Fedora/EPEL package data: <https://packages.fedoraproject.org/pkgs/transmission/transmission/>
+* Upstream build guidance: <https://github.com/transmission/transmission>

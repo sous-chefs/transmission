@@ -21,7 +21,7 @@ This cookbook no longer provides recipe or node attribute APIs. See
 * CentOS Stream 9+
 * Debian 12+
 * Fedora
-* openSUSE Leap 15+
+* openSUSE Leap 16+
 * Oracle Linux 8+
 * Red Hat Enterprise Linux 8+
 * Rocky Linux 8+

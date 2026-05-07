@@ -5,14 +5,14 @@ Downloads a file through a running Transmission RPC service.
 ## Actions
 
 | Action | Description |
-|--------|-------------|
+| --- | --- |
 | `:create` | Adds the torrent and creates the target file. Default. |
 | `:delete` | Deletes the target file. |
 
 ## Properties
 
 | Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `path` | String | Name property | Target file path. |
 | `torrent` | String | Required | Torrent URL or local torrent file path. |
 | `blocking` | Boolean | `true` | Waits for download completion in the same Chef run. |

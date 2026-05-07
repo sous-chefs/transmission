@@ -31,7 +31,7 @@ end
 ## Attribute Mapping
 
 | Removed attribute | Resource property |
-|-------------------|-------------------|
+| --- | --- |
 | `node['transmission']['install_method']` | `transmission_install.install_method`, `transmission_service.install_method` |
 | `node['transmission']['user']` | `user` |
 | `node['transmission']['group']` | `group` |

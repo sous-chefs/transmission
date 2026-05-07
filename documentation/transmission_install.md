@@ -5,14 +5,14 @@ Installs Transmission from operating system packages or from an upstream source 
 ## Actions
 
 | Action | Description |
-|--------|-------------|
+| --- | --- |
 | `:install` | Installs Transmission. Default. |
 | `:remove` | Removes installed packages or the source-installed daemon binary. |
 
 ## Properties
 
 | Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `install_method` | String | Platform dependent | `package` or `source`. |
 | `package_names` | Array | `transmission`, `transmission-cli`, `transmission-daemon` | Packages to install. |
 | `source_url` | String | Upstream release URL | Base URL for source archives. |

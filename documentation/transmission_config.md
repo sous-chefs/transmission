@@ -5,14 +5,14 @@ Creates Transmission directories, defaults, and `settings.json`.
 ## Actions
 
 | Action | Description |
-|--------|-------------|
+| --- | --- |
 | `:create` | Creates configuration. Default. |
 | `:delete` | Removes configuration files and managed directories. |
 
 ## Properties
 
 | Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `rpc_password` | String | Required | RPC password. Sensitive. |
 | `rpc_username` | String | `transmission` | RPC username. |
 | `rpc_port` | Integer | `9091` | RPC port. |

@@ -5,7 +5,7 @@ Manages the Transmission daemon service.
 ## Actions
 
 | Action | Description |
-|--------|-------------|
+| --- | --- |
 | `:create` | Creates package override or source systemd unit. |
 | `:enable` | Enables the service. |
 | `:start` | Starts the service. |
@@ -18,7 +18,7 @@ Manages the Transmission daemon service.
 ## Properties
 
 | Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| --- | --- | --- | --- |
 | `install_method` | String | Platform dependent | `package` or `source`. |
 | `binary_path` | String | Platform dependent | Path to `transmission-daemon`. |
 | `user` | String | Platform dependent | Service user. |

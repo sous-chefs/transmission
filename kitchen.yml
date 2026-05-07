@@ -23,7 +23,7 @@ platforms:
   - name: centos-stream-9
   - name: debian-12
   - name: fedora-latest
-  - name: opensuse-leap-15
+  - name: opensuse-leap-16
   - name: oraclelinux-8
   - name: oraclelinux-9
   - name: rockylinux-8
