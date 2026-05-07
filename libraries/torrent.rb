@@ -23,7 +23,8 @@
 begin
   require 'ostruct'
   require 'transmission-simple'
-rescue LoadError
+rescue LoadError => e
+  warn "Optional transmission-simple library unavailable: #{e.message}" if $VERBOSE
 end
 
 # all your monkey patches are belong to us
