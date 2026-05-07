@@ -16,12 +16,19 @@ not publish a dedicated APT, DNF/YUM, or Zypper repository for Linux server pack
 * Fedora current releases provide Transmission 4.1.x packages.
 * EPEL 9 provides Transmission 4.0.6 packages.
 * EPEL 8 provides Transmission 3.00 packages.
-* RHEL-compatible platforms require EPEL for package installs; this cookbook does not enable EPEL.
+* RHEL-compatible platforms require EPEL for package installs; the package install resource enables
+  the distribution EPEL repository before installing Transmission packages.
+* Amazon Linux 2023 does not provide the default Transmission package set in the base repositories
+  used by Dokken CI. Amazon Linux remains in metadata support for source installs, but is excluded
+  from the default package-based Dokken matrix.
 
 ### Zypper (SUSE)
 
 * openSUSE Leap 16 packages are distribution maintained. Source installation remains available when
   package availability differs by release.
+* No `dokken/opensuse-leap-16` container image is available as of this migration, so openSUSE Leap 16
+  remains in metadata and non-Dokken Kitchen coverage but is excluded from Dokken CI until an image is
+  published.
 
 ## Architecture Limitations
 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'json'
+
 provides :transmission_config
 unified_mode true
 
@@ -29,6 +31,28 @@ default_action :create
 
 action_class do
   include Transmission::Cookbook::Helpers
+
+  def template_rpc_password
+    return new_resource.rpc_password unless ::File.exist?(new_resource.settings_path)
+
+    current_password = ::JSON.parse(::File.read(new_resource.settings_path))['rpc-password']
+    if current_password.is_a?(String) && current_password.start_with?('{')
+      current_password
+    else
+      new_resource.rpc_password
+    end
+  rescue JSON::ParserError
+    new_resource.rpc_password
+  end
+
+  def existing_hashed_rpc_password?
+    return false unless ::File.exist?(new_resource.settings_path)
+
+    current_password = ::JSON.parse(::File.read(new_resource.settings_path))['rpc-password']
+    current_password.is_a?(String) && current_password.start_with?('{')
+  rescue JSON::ParserError
+    false
+  end
 end
 
 action :create do
@@ -51,12 +75,6 @@ action :create do
     notifies :reload, 'service[transmission-daemon]', :delayed
   end
 
-  directory '/etc/transmission-daemon' do
-    owner 'root'
-    group new_resource.group
-    mode '0755'
-  end
-
   [new_resource.home, new_resource.config_dir, new_resource.download_dir, new_resource.incomplete_dir, new_resource.watch_dir].each do |path|
     directory path do
       owner new_resource.user
@@ -66,12 +84,17 @@ action :create do
     end
   end
 
-  template '/etc/transmission-daemon/settings.json' do
+  link new_resource.settings_path do
+    action :delete
+    only_if { ::File.symlink?(new_resource.settings_path) }
+  end
+
+  template new_resource.settings_path do
     source 'settings.json.erb'
     cookbook 'transmission'
     owner new_resource.user
     group new_resource.group
-    mode '0640'
+    mode '0600'
     sensitive true
     variables(
       download_dir: new_resource.download_dir,
@@ -81,7 +104,7 @@ action :create do
       ratio_limit: new_resource.ratio_limit,
       ratio_limit_enabled: new_resource.ratio_limit_enabled,
       rpc_bind_address: new_resource.rpc_bind_address,
-      rpc_password: new_resource.rpc_password,
+      rpc_password: template_rpc_password,
       rpc_port: new_resource.rpc_port,
       rpc_username: new_resource.rpc_username,
       rpc_whitelist: new_resource.rpc_whitelist,
@@ -93,11 +116,8 @@ action :create do
       watch_dir: new_resource.watch_dir,
       watch_dir_enabled: new_resource.watch_dir_enabled
     )
+    not_if { existing_hashed_rpc_password? }
     notifies :reload, 'service[transmission-daemon]', :delayed
-  end
-
-  link "#{new_resource.config_dir}/settings.json" do
-    to '/etc/transmission-daemon/settings.json'
   end
 end
 
@@ -107,11 +127,7 @@ action :delete do
     action :nothing
   end
 
-  link "#{new_resource.config_dir}/settings.json" do
-    action :delete
-  end
-
-  file '/etc/transmission-daemon/settings.json' do
+  file new_resource.settings_path do
     action :delete
   end
 

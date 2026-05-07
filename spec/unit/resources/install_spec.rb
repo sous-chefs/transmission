@@ -14,6 +14,17 @@ describe 'transmission_install' do
     it { is_expected.to install_package(%w(transmission transmission-cli transmission-daemon)) }
   end
 
+  context 'with RHEL package install' do
+    platform 'almalinux', '9'
+
+    recipe do
+      transmission_install 'default'
+    end
+
+    it { is_expected.to create_yum_repository('epel') }
+    it { is_expected.to install_package(%w(transmission transmission-cli transmission-daemon)) }
+  end
+
   context 'with source install' do
     recipe do
       transmission_install 'source' do

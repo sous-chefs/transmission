@@ -1,6 +1,8 @@
 # transmission_config
 
-Creates Transmission directories, defaults, and `settings.json`.
+Creates Transmission directories, defaults, and runtime `settings.json`. When Transmission has
+rewritten the RPC password to its hashed form, the resource preserves the daemon-managed settings
+file to keep service converges idempotent.
 
 ## Actions
 
@@ -13,7 +15,7 @@ Creates Transmission directories, defaults, and `settings.json`.
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rpc_password` | String | Required | RPC password. Sensitive. |
+| `rpc_password` | String | Required | RPC password. Sensitive. Existing daemon-hashed values are preserved for idempotency. |
 | `rpc_username` | String | `transmission` | RPC username. |
 | `rpc_port` | Integer | `9091` | RPC port. |
 | `rpc_bind_address` | String | `0.0.0.0` | RPC bind address. |
@@ -31,6 +33,7 @@ Creates Transmission directories, defaults, and `settings.json`.
 | `speed_limit_down_enabled` | Boolean | `false` | Enables download speed limit. |
 | `speed_limit_up` | Integer | `100` | Upload speed limit in KB/s. |
 | `speed_limit_up_enabled` | Boolean | `false` | Enables upload speed limit. |
+| `settings_path` | String | Platform dependent | Runtime `settings.json` path. |
 
 ## Examples
 

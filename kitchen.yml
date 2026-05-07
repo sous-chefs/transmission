@@ -46,4 +46,4 @@ suites:
     verifier: *default_verifier
     attributes:
       transmission_test:
-        rpc_password: changeme
+        rpc_password: '{95d8c34c0f058c146bcb5d908ccf532aa4f5d3e8XcQbfyRx'

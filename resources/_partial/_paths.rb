@@ -4,4 +4,5 @@ property :user, String, default: lazy { default_user }
 property :group, String, default: lazy { default_group }
 property :home, String, default: lazy { transmission_home_path }
 property :config_dir, String, default: lazy { transmission_config_path }
+property :settings_path, String, default: lazy { "#{config_dir}/settings.json" }
 property :defaults_path, String, default: lazy { transmission_defaults_path }

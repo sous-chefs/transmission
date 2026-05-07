@@ -21,11 +21,6 @@ platforms:
       image: dokken/almalinux-9
       pid_one_command: /usr/lib/systemd/systemd
 
-  - name: amazonlinux-2023
-    driver:
-      image: dokken/amazonlinux-2023
-      pid_one_command: /usr/lib/systemd/systemd
-
   - name: centos-stream-9
     driver:
       image: dokken/centos-stream-9
@@ -39,11 +34,6 @@ platforms:
   - name: fedora-latest
     driver:
       image: dokken/fedora-latest
-      pid_one_command: /usr/lib/systemd/systemd
-
-  - name: opensuse-leap-16
-    driver:
-      image: dokken/opensuse-leap-16
       pid_one_command: /usr/lib/systemd/systemd
 
   - name: oraclelinux-8

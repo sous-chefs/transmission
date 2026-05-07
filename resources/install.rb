@@ -30,10 +30,21 @@ action_class do
   def source_install_marker
     "#{new_resource.source_prefix}/bin/transmission-daemon"
   end
+
+  def rhel_major_version
+    node['platform_version'].to_i
+  end
 end
 
 action :install do
   if new_resource.install_method == 'package'
+    yum_repository 'epel' do
+      description 'Extra Packages for Enterprise Linux'
+      baseurl lazy { "https://download.fedoraproject.org/pub/epel/#{rhel_major_version}/Everything/$basearch" }
+      gpgkey lazy { "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-#{rhel_major_version}" }
+      only_if { platform_family?('rhel') }
+    end
+
     package new_resource.package_names
   else
     package new_resource.build_packages

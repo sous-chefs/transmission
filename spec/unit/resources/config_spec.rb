@@ -13,13 +13,11 @@ describe 'transmission_config' do
   end
 
   it { is_expected.to create_template('/etc/default/transmission-daemon') }
-  it { is_expected.to create_directory('/etc/transmission-daemon') }
   it { is_expected.to create_directory('/var/lib/transmission-daemon/info') }
-  it { is_expected.to create_template('/etc/transmission-daemon/settings.json') }
-  it { is_expected.to create_link('/var/lib/transmission-daemon/info/settings.json').with(to: '/etc/transmission-daemon/settings.json') }
+  it { is_expected.to create_template('/var/lib/transmission-daemon/info/settings.json') }
 
   it do
-    expect(chef_run).to render_file('/etc/transmission-daemon/settings.json')
+    expect(chef_run).to render_file('/var/lib/transmission-daemon/info/settings.json')
       .with_content('"rpc-password": "changeme"')
   end
 end
