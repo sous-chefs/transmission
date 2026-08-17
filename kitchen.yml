@@ -42,6 +42,7 @@ x-verifiers:
 
 suites:
   - name: default
+    named_run_list: default
     run_list: *default_run_list
     verifier: *default_verifier
     attributes:
